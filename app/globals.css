@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-primary font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto max-w-container px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Prose-Stile für Sanity Rich Text */
+  .prose-boogly {
+    @apply text-secondary leading-relaxed;
+  }
+  .prose-boogly h2 {
+    @apply text-primary text-2xl font-bold mt-8 mb-4;
+  }
+  .prose-boogly h3 {
+    @apply text-primary text-xl font-semibold mt-6 mb-3;
+  }
+  .prose-boogly p {
+    @apply mb-4;
+  }
+  .prose-boogly strong {
+    @apply text-primary font-semibold;
+  }
+
+  /* Form elements */
+  .form-input {
+    @apply w-full bg-surface-2 border border-border rounded-xl px-4 py-3
+           text-primary placeholder-muted
+           focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-secondary mb-2;
+  }
+
+  .form-error {
+    @apply text-red-400 text-sm mt-1;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(135deg, #f97316, #f59e0b) 1;
+  }
+}
