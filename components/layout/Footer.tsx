@@ -9,8 +9,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           {/* Brand */}
           <div>
-            <p className="text-primary font-bold text-lg mb-2">
-              Boogly<span className="text-accent">.</span>
+            <p className="text-[18px] mb-2 tracking-tight" style={{ fontFamily: '"Archivo Black", sans-serif', color: 'var(--text)' }}>
+              BOOGLY.STUDIO
             </p>
             <p className="text-secondary text-sm leading-relaxed">
               Echte Menschen. Echte Begegnungen.<br />
@@ -41,7 +41,7 @@ export function Footer() {
 
           {/* Social & Legal */}
           <div>
-            <p className="text-primary font-semibold text-sm mb-4">Folg uns</p>
+            <p className="text-primary font-semibold text-sm mb-4">Folge uns</p>
             <ul className="space-y-2">
               <li>
                 <a
