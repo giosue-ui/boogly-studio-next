@@ -27,7 +27,7 @@ export default async function HomePage() {
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden" style={{ background: 'var(--black)' }}>
         <div className="container relative pt-28 pb-24 sm:pt-36 sm:pb-32">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
             <div
               className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8 text-sm font-medium"
@@ -49,12 +49,12 @@ export default async function HomePage() {
               <span style={{ color: 'var(--accent)' }}>Echte Begegnungen.</span>
             </h1>
 
-            <p className="text-xl leading-relaxed max-w-2xl mb-10" style={{ color: 'var(--muted)' }}>
+            <p className="text-xl leading-relaxed max-w-2xl mx-auto mb-10" style={{ color: 'var(--muted)' }}>
               Boogly Studio lässt die unterschiedlichsten Menschen aufeinandertreffen –
               ungefiltert, ungeschönt und immer nah am echten Leben.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/events"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90"
