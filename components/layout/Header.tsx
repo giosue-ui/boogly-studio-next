@@ -5,9 +5,8 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 const NAV_LINKS = [
-  { href: '/events', label: 'Events' },
+  { href: '/events', label: 'Castings' },
   { href: '/ueber-uns', label: 'Über uns' },
-  { href: '/kontakt', label: 'Kontakt' },
 ]
 
 export function Header() {
@@ -15,15 +14,19 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+    <header
+      className="sticky top-0 z-50 border-b backdrop-blur-md"
+      style={{ background: 'rgba(12,12,12,0.9)', borderColor: 'rgba(255,255,255,0.07)' }}
+    >
       <div className="container">
-        <nav className="flex items-center justify-between h-16">
+        <nav className="flex items-center justify-between h-[60px]">
           {/* Logo */}
           <Link
             href="/"
-            className="text-primary font-bold text-xl tracking-tight hover:text-accent transition-colors"
+            className="text-[18px] tracking-tight hover:opacity-80 transition-opacity"
+            style={{ fontFamily: '"Archivo Black", sans-serif', color: 'var(--text)', letterSpacing: '0.02em' }}
           >
-            Boogly<span className="text-accent">.</span>
+            BOOGLY.STUDIO
           </Link>
 
           {/* Desktop nav */}
@@ -32,18 +35,16 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  pathname.startsWith(link.href)
-                    ? 'text-primary'
-                    : 'text-secondary hover:text-primary'
-                }`}
+                className="text-sm font-medium transition-colors"
+                style={{ color: pathname.startsWith(link.href) ? 'var(--text)' : 'var(--muted)' }}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/events"
-              className="bg-accent hover:bg-accent-hover text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+              className="text-sm font-semibold px-4 py-2 rounded-lg transition-opacity hover:opacity-90"
+              style={{ background: 'var(--accent)', color: '#0c0c0c' }}
             >
               Jetzt bewerben
             </Link>
@@ -51,7 +52,8 @@ export function Header() {
 
           {/* Mobile burger */}
           <button
-            className="md:hidden p-2 text-secondary hover:text-primary"
+            className="md:hidden p-2 transition-colors"
+            style={{ color: 'var(--muted)' }}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menü öffnen"
           >
@@ -67,12 +69,13 @@ export function Header() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden border-t border-border py-4 space-y-3 animate-fade-in">
+          <div className="md:hidden border-t py-4 space-y-3" style={{ borderColor: 'var(--border)' }}>
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block px-2 py-2 text-secondary hover:text-primary transition-colors"
+                className="block px-2 py-2 transition-colors"
+                style={{ color: 'var(--muted)' }}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -80,7 +83,8 @@ export function Header() {
             ))}
             <Link
               href="/events"
-              className="block bg-accent text-white text-sm font-semibold px-4 py-3 rounded-lg text-center"
+              className="block text-sm font-semibold px-4 py-3 rounded-lg text-center"
+              style={{ background: 'var(--accent)', color: '#0c0c0c' }}
               onClick={() => setMenuOpen(false)}
             >
               Jetzt bewerben

@@ -2,11 +2,22 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getFeaturedEvents } from '@/lib/sanity/queries'
 import { EventCard } from '@/components/events/EventCard'
-import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = {
   title: 'Boogly Studio – Echte Menschen. Echte Begegnungen.',
 }
+
+const THEMEN = [
+  'Politik & Gesellschaft',
+  'Dating & Beziehungen',
+  'Geld & Karriere',
+  'Glaube & Werte',
+  'Ernährung & Lifestyle',
+  'Feminismus & Gleichberechtigung',
+  'Migration & Identität',
+  'Generation & Alter',
+  'Bildung & Zukunft',
+]
 
 export default async function HomePage() {
   const featuredEvents = await getFeaturedEvents()
@@ -14,56 +25,90 @@ export default async function HomePage() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden">
-        {/* Gradient blob */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="container relative pt-24 pb-20 sm:pt-32 sm:pb-28">
+      <section className="relative overflow-hidden" style={{ background: 'var(--black)' }}>
+        <div className="container relative pt-28 pb-24 sm:pt-36 sm:pb-32">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 bg-accent-subtle border border-accent/20 rounded-full px-4 py-1.5 mb-8">
-              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-              <span className="text-accent text-sm font-medium">Neue Castings offen</span>
+            {/* Badge */}
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8 text-sm font-medium"
+              style={{
+                background: 'var(--accent-bg)',
+                border: '1px solid var(--accent-border)',
+                color: 'var(--accent)',
+              }}
+            >
+              <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--accent)' }} />
+              Neu in Deutschland
             </div>
 
-            <h1 className="text-5xl sm:text-7xl font-black leading-[1.05] tracking-tight mb-6">
-              Echte{' '}
-              <span className="text-gradient">Menschen</span>
-              .<br />
-              Echte{' '}
-              <span className="text-gradient">Begegnungen</span>.
+            <h1
+              className="text-5xl sm:text-7xl font-black leading-[1.05] tracking-tight mb-6"
+              style={{ fontFamily: '"Space Grotesk", sans-serif', color: 'var(--text)' }}
+            >
+              Echte Menschen.<br />
+              <span style={{ color: 'var(--accent)' }}>Echte Begegnungen.</span>
             </h1>
 
-            <p className="text-secondary text-xl leading-relaxed max-w-2xl mb-10">
-              Boogly Studio produziert authentische Social-Video-Formate, die bewegen.
-              Werde Teil unserer Community und bring deine echte Persönlichkeit auf den Bildschirm.
+            <p className="text-xl leading-relaxed max-w-2xl mb-10" style={{ color: 'var(--muted)' }}>
+              Boogly Studio lässt die unterschiedlichsten Menschen aufeinandertreffen –
+              ungefiltert, ungeschönt und immer nah am echten Leben.
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button href="/events" size="lg">
-                Aktuelle Castings entdecken →
-              </Button>
-              <Button href="/ueber-uns" variant="secondary" size="lg">
-                Was ist Boogly Studio?
-              </Button>
+              <Link
+                href="/events"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90"
+                style={{ background: 'var(--accent)', color: '#0c0c0c' }}
+              >
+                Jetzt bewerben
+              </Link>
+              <Link
+                href="/events"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-colors"
+                style={{
+                  border: '1px solid var(--border-hover)',
+                  color: 'var(--text)',
+                  background: 'transparent',
+                }}
+              >
+                Formate entdecken
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── Marquee ──────────────────────────────────────────────────────── */}
+      <div
+        className="border-y py-4 overflow-hidden"
+        style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}
+      >
+        <p className="text-sm" style={{ color: 'var(--muted)', textAlign: 'center', letterSpacing: '0.05em' }}>
+          {[...THEMEN, ...THEMEN].join('  ·  ')}
+        </p>
+      </div>
+
       {/* ── Featured Events ───────────────────────────────────────────────── */}
-      <section className="container pb-24">
+      <section className="container py-24">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-2"
+              style={{ color: 'var(--accent)' }}
+            >
               Aktuelle Castings
             </p>
-            <h2 className="text-primary text-3xl sm:text-4xl font-bold">
+            <h2
+              className="text-3xl sm:text-4xl font-bold"
+              style={{ fontFamily: '"Space Grotesk", sans-serif', color: 'var(--text)' }}
+            >
               Jetzt bewerben
             </h2>
           </div>
           <Link
             href="/events"
-            className="hidden sm:flex items-center gap-2 text-secondary hover:text-primary text-sm font-medium transition-colors"
+            className="hidden sm:flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary"
+            style={{ color: 'var(--muted)' }}
           >
             Alle Events
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,43 +124,57 @@ export default async function HomePage() {
             ))}
           </div>
         ) : (
-          <div className="bg-surface border border-border rounded-2xl p-12 text-center">
+          <div
+            className="rounded-2xl p-12 text-center"
+            style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
+          >
             <p className="text-4xl mb-4">🎬</p>
-            <p className="text-secondary">Gerade keine aktiven Castings. Schau bald wieder rein!</p>
+            <p style={{ color: 'var(--muted)' }}>Gerade keine aktiven Castings. Schau bald wieder rein!</p>
           </div>
         )}
       </section>
 
       {/* ── How it works ─────────────────────────────────────────────────── */}
-      <section className="border-t border-border py-24">
+      <section className="py-24 border-t" style={{ borderColor: 'var(--border)' }}>
         <div className="container">
           <div className="text-center mb-16">
-            <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-2">So läuft es ab</p>
-            <h2 className="text-primary text-3xl sm:text-4xl font-bold">Dein Weg ins Format</h2>
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-2"
+              style={{ color: 'var(--accent)' }}
+            >
+              So läuft es ab
+            </p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold"
+              style={{ fontFamily: '"Space Grotesk", sans-serif', color: 'var(--text)' }}
+            >
+              Dein Weg ins Format
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              {
-                step: '01',
-                title: 'Casting entdecken',
-                desc: 'Schau dir unsere aktuellen Formate an und finde das, das zu dir passt.',
-              },
-              {
-                step: '02',
-                title: 'Bewerben',
-                desc: 'Füll das Formular aus und zeig uns, wer du bist. Keine Scheu – wir wollen dich kennenlernen.',
-              },
-              {
-                step: '03',
-                title: 'Dabei sein',
-                desc: 'Wenn wir denken, dass du zum Format passt, melden wir uns. Dann geht\'s los.',
-              },
+              { step: '01', title: 'Casting entdecken', desc: 'Schau dir unsere aktuellen Formate an und finde das, das zu dir passt.' },
+              { step: '02', title: 'Bewerben', desc: 'Füll das Formular aus und zeig uns, wer du bist. Keine Scheu – wir wollen dich kennenlernen.' },
+              { step: '03', title: 'Dabei sein', desc: "Wenn wir denken, dass du zum Format passt, melden wir uns. Dann geht's los." },
             ].map((item) => (
-              <div key={item.step} className="bg-surface border border-border rounded-2xl p-6">
-                <span className="text-accent text-4xl font-black opacity-60">{item.step}</span>
-                <h3 className="text-primary font-bold text-lg mt-3 mb-2">{item.title}</h3>
-                <p className="text-secondary text-sm leading-relaxed">{item.desc}</p>
+              <div
+                key={item.step}
+                className="rounded-2xl p-6"
+                style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
+              >
+                <span
+                  className="text-4xl font-black"
+                  style={{ color: 'var(--accent)', opacity: 0.6, fontFamily: '"Space Grotesk", sans-serif' }}
+                >
+                  {item.step}
+                </span>
+                <h3 className="font-bold text-lg mt-3 mb-2" style={{ color: 'var(--text)' }}>
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -124,16 +183,26 @@ export default async function HomePage() {
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
       <section className="container pb-24">
-        <div className="bg-gradient-to-br from-accent/10 to-amber-500/5 border border-accent/20 rounded-3xl p-12 text-center">
-          <h2 className="text-primary text-3xl sm:text-4xl font-bold mb-4">
+        <div
+          className="rounded-3xl p-12 text-center"
+          style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
+        >
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-4"
+            style={{ fontFamily: '"Space Grotesk", sans-serif', color: 'var(--text)' }}
+          >
             Bereit, deine Geschichte zu erzählen?
           </h2>
-          <p className="text-secondary text-lg max-w-xl mx-auto mb-8">
+          <p className="text-lg max-w-xl mx-auto mb-8" style={{ color: 'var(--muted)' }}>
             Kein Casting, keine Perfektion — nur echte Persönlichkeit.
           </p>
-          <Button href="/events" size="lg">
+          <Link
+            href="/events"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-opacity hover:opacity-90"
+            style={{ background: 'var(--accent)', color: '#0c0c0c' }}
+          >
             Alle Castings ansehen →
-          </Button>
+          </Link>
         </div>
       </section>
     </>

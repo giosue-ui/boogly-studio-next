@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +7,17 @@
 @layer base {
   :root {
     color-scheme: dark;
+    --black: #0c0c0c;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.15);
+    --accent: #c8f55a;
+    --accent-bg: rgba(200,245,90,0.1);
+    --accent-border: rgba(200,245,90,0.25);
+    --text: #f0ede8;
+    --muted: rgba(240,237,232,0.5);
+    --hint: rgba(240,237,232,0.25);
   }
 
   * {
@@ -21,11 +32,12 @@
 
   body {
     @apply bg-background text-primary font-sans;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    line-height: 1.65;
   }
 
   ::selection {
-    @apply bg-accent text-white;
+    background: var(--accent);
+    color: #0c0c0c;
   }
 
   /* Scrollbar */
@@ -33,10 +45,11 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-background;
+    background: var(--black);
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-border rounded-full;
+    background: rgba(255,255,255,0.15);
+    border-radius: 9999px;
   }
 }
 
@@ -81,10 +94,9 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-accent to-amber-400 bg-clip-text text-transparent;
-  }
-
-  .border-gradient {
-    border-image: linear-gradient(135deg, #f97316, #f59e0b) 1;
+    background: linear-gradient(135deg, #c8f55a, #e8ff90);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

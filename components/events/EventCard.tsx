@@ -56,7 +56,7 @@ export function EventCard({ event }: { event: EventSummary }) {
         </div>
         {deadlineSoon && (
           <div className="absolute top-3 right-3">
-            <span className="bg-orange-500/20 text-orange-400 border border-orange-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">
+            <span className="text-xs font-semibold px-2.5 py-1 rounded-full" style={{ background: 'var(--accent-bg)', color: 'var(--accent)', border: '1px solid var(--accent-border)' }}>
               ⏰ Frist bald
             </span>
           </div>
@@ -88,7 +88,7 @@ export function EventCard({ event }: { event: EventSummary }) {
             </span>
           )}
           {event.applicationDeadline && (
-            <span className={`flex items-center gap-1 ${deadlineSoon ? 'text-orange-400' : ''}`}>
+            <span className="flex items-center gap-1" style={deadlineSoon ? { color: 'var(--accent)' } : {}}>
               ⏳ bis {format(new Date(event.applicationDeadline), 'd.M.yyyy', { locale: de })}
             </span>
           )}
