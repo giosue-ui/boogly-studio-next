@@ -15,8 +15,12 @@ const builder = imageUrlBuilder(client)
 
 // ─── Static params ────────────────────────────────────────────────────────────
 export async function generateStaticParams() {
-  const slugs = await getAllEventSlugs()
-  return slugs.map(({ slug }) => ({ slug }))
+  try {
+    const slugs = await getAllEventSlugs()
+    return slugs.map(({ slug }) => ({ slug }))
+  } catch {
+    return []
+  }
 }
 
 // ─── Metadata ─────────────────────────────────────────────────────────────────
