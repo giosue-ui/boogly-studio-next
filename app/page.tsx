@@ -83,9 +83,17 @@ export default async function HomePage() {
         className="border-y py-4 overflow-hidden"
         style={{ borderColor: 'var(--border)', background: 'var(--surface)' }}
       >
-        <p className="text-sm" style={{ color: 'var(--muted)', textAlign: 'center', letterSpacing: '0.05em' }}>
-          {[...THEMEN, ...THEMEN].join('  ·  ')}
-        </p>
+        <div className="flex animate-marquee whitespace-nowrap" style={{ width: 'max-content' }}>
+          {[...THEMEN, ...THEMEN].map((thema, i) => (
+            <span key={i} className="inline-flex items-center gap-6 px-6 text-sm font-medium" style={{ color: 'var(--muted)' }}>
+              <span
+                className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                style={{ background: 'var(--accent)' }}
+              />
+              {thema}
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* ── Featured Events ───────────────────────────────────────────────── */}

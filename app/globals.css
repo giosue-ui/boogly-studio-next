@@ -93,6 +93,15 @@
 }
 
 @layer utilities {
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
   .text-gradient {
     background: linear-gradient(135deg, #c8f55a, #e8ff90);
     -webkit-background-clip: text;
