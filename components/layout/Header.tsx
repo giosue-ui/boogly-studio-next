@@ -42,13 +42,15 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/events"
-              className="text-sm font-semibold px-4 py-2 rounded-lg transition-opacity hover:opacity-90"
+            <a
+              href="https://youtube.com/@BooglyStudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold px-4 py-2 rounded-lg transition-opacity hover:opacity-90 inline-flex items-center gap-2"
               style={{ background: 'var(--accent)', color: '#0c0c0c' }}
             >
-              Jetzt bewerben
-            </Link>
+              ▶ Jetzt schauen
+            </a>
           </div>
 
           {/* Mobile burger */}
@@ -82,14 +84,16 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/events"
+            <a
+              href="https://youtube.com/@BooglyStudio"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-sm font-semibold px-4 py-3 rounded-lg text-center"
               style={{ background: 'var(--accent)', color: '#0c0c0c' }}
               onClick={() => setMenuOpen(false)}
             >
-              Jetzt bewerben
-            </Link>
+              ▶ Jetzt schauen
+            </a>
           </div>
         )}
       </div>
