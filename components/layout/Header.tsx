@@ -7,6 +7,7 @@ import { useState } from 'react'
 const NAV_LINKS = [
   { href: '/events', label: 'Castings' },
   { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/faq', label: 'FAQ' },
 ]
 
 export function Header() {
