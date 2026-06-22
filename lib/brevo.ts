@@ -1,6 +1,6 @@
 /**
  * Brevo (ehem. Sendinblue) E-Mail-Integration
- * Sendet Transaktions-E-Mails über Brevo Templates.
+ * Sendet Transaktions-E-Mails øber Brevo Templates.
  */
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY!
@@ -57,7 +57,7 @@ export async function sendApplicationConfirmation(params: {
 
 /**
  * Sendet eine Benachrichtigung an Boogly Studio bei neuer Bewerbung.
- * Nutzt Template ID aus BREVO_NOTIFICATION_TEMPLATE_ID.
+ * Nutzt einfaches HTML-E-Mail (kein Template nötig).
  */
 export async function sendApplicationNotification(params: {
   applicantName: string
@@ -65,18 +65,29 @@ export async function sendApplicationNotification(params: {
   eventTitle: string
   format: string
 }): Promise<void> {
-  const templateId = parseInt(process.env.BREVO_NOTIFICATION_TEMPLATE_ID || '2', 10)
   const notificationEmail = process.env.BREVO_NOTIFICATION_EMAIL || 'hallo@boogly.studio'
 
   await sendBrevoEmail({
-    templateId,
+    sender: { name: 'Boogly Studio', email: 'hallo@boogly.studio' },
     to: [{ name: 'Boogly Studio', email: notificationEmail }],
-    params: {
-      applicantName: params.applicantName,
-      applicantEmail: params.applicantEmail,
-      eventTitle: params.eventTitle,
-      format: params.format,
-    },
+    replyTo: { name: params.applicantName, email: params.applicantEmail },
+    subject: `🎬 Neue Bewerbung: ${params.applicantName} – ${params.eventTitle}`,
+    htmlContent: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #c8ff00; background: #0c0c0c; padding: 16px; border-radius: 8px;">
+          Neue Bewerbung eingegangen
+        </h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <tr><td style="padding: 8px; font-weight: bold;">Name:</td><td style="padding: 8px;">${params.applicantName}</td></tr>
+          <tr style="background: #f5f5f5;"><td style="padding: 8px; font-weight: bold;">E-Mail:</td><td style="padding: 8px;"><a href="mailto:${params.applicantEmail}">${params.applicantEmail}</a></td></tr>
+          <tr><td style="padding: 8px; font-weight: bold;">Event:</td><td style="padding: 8px;">${params.eventTitle}</td></tr>
+          <tr style="background: #f5f5f5;"><td style="padding: 8px; font-weight: bold;">Format:</td><td style="padding: 8px;">${params.format}</td></tr>
+        </table>
+        <p style="margin-top: 24px; color: #666; font-size: 14px;">
+          Diese Nachricht wurde automatisch von boogly.studio gesendet.
+        </p>
+      </div>
+    `,
   })
 }
 
