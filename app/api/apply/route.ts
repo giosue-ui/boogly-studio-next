@@ -82,8 +82,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true })
     }
 
-    // 1. In Airtable speichern
-    await saveApplication({
+    // 1. In Airtable speichern (nicht blockierend — E-Mails werden trotzdem gesendet)
+    saveApplication({
       name: data.name,
       email: data.email,
       instagram: data.instagram,
@@ -93,18 +93,18 @@ export async function POST(request: NextRequest) {
       bio: data.bio,
       motivation: data.motivation,
       themen: data.themen,
-    })
+    }).catch((err) => console.error('[apply] Airtable-Fehler:', err))
 
-    // 2. Bestätigungs-E-Mail an Bewerber (nicht blockierend)
-    sendApplicationConfirmation({
+    // 2. Bestätigungs-E-Mail an Bewerber
+    await sendApplicationConfirmation({
       name: data.name,
       email: data.email,
       eventTitle: data.eventTitle,
       format: data.format,
     }).catch((err) => console.error('[apply] Bestätigungsmail fehlgeschlagen:', err))
 
-    // 3. Benachrichtigung an Boogly Studio (nicht blockierend)
-    sendApplicationNotification({
+    // 3. Benachrichtigung an Boogly Studio
+    await sendApplicationNotification({
       applicantName: data.name,
       applicantEmail: data.email,
       eventTitle: data.eventTitle,
