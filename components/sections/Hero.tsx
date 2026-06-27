@@ -1,4 +1,3 @@
-import { GooglyEyes } from '@/components/ui/GooglyEyes'
 import { Button } from '@/components/ui/Button'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import type { CtaButton } from '@/lib/sanity/types'
@@ -27,8 +26,6 @@ export function Hero({ eyebrow, headline, text, primaryCta, secondaryCta }: Hero
   return (
     <section className="hero-radial relative min-h-[90vh] flex flex-col items-center justify-center text-center px-6 pt-[90px] pb-[100px] overflow-hidden">
       <div className="dot-grid absolute inset-0 opacity-70 pointer-events-none" />
-
-      <GooglyEyes count={2} size={78} gap={26} className="relative mb-10" />
 
       <div className="relative mb-[22px]">
         <Eyebrow>{eyebrow || D.eyebrow}</Eyebrow>
