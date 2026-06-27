@@ -13,7 +13,7 @@ export default function KontaktPage() {
         {/* Header */}
         <div className="mb-16">
           <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">Kontakt</p>
-          <h1 className="text-primary text-4xl sm:text-5xl font-black leading-tight mb-4">
+          <h1 className="font-display text-primary text-4xl sm:text-5xl font-extrabold leading-tight mb-4">
             Schreib uns.
           </h1>
           <p className="text-secondary text-xl max-w-xl">

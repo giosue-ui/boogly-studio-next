@@ -6,7 +6,17 @@
 const BREVO_API_KEY = process.env.BREVO_API_KEY!
 const BREVO_URL = 'https://api.brevo.com/v3/smtp/email'
 
-type EmailParams = Record<string, string | number>
+/**
+ * Escaped Nutzereingaben für die HTML-E-Mails (Schutz vor HTML-/Script-Injection).
+ */
+function esc(value: string): string {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
 
 async function sendBrevoEmail(payload: object): Promise<void> {
   if (!BREVO_API_KEY) {
@@ -74,14 +84,14 @@ export async function sendApplicationNotification(params: {
     subject: `🎬 Neue Bewerbung: ${params.applicantName} – ${params.eventTitle}`,
     htmlContent: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #c8ff00; background: #0c0c0c; padding: 16px; border-radius: 8px;">
+        <h2 style="color: #54d98c; background: #0e0e12; padding: 16px; border-radius: 8px;">
           Neue Bewerbung eingegangen
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
-          <tr><td style="padding: 8px; font-weight: bold;">Name:</td><td style="padding: 8px;">${params.applicantName}</td></tr>
-          <tr style="background: #f5f5f5;"><td style="padding: 8px; font-weight: bold;">E-Mail:</td><td style="padding: 8px;"><a href="mailto:${params.applicantEmail}">${params.applicantEmail}</a></td></tr>
-          <tr><td style="padding: 8px; font-weight: bold;">Event:</td><td style="padding: 8px;">${params.eventTitle}</td></tr>
-          <tr style="background: #f5f5f5;"><td style="padding: 8px; font-weight: bold;">Format:</td><td style="padding: 8px;">${params.format}</td></tr>
+          <tr><td style="padding: 8px; font-weight: bold;">Name:</td><td style="padding: 8px;">${esc(params.applicantName)}</td></tr>
+          <tr style="background: #f5f5f5;"><td style="padding: 8px; font-weight: bold;">E-Mail:</td><td style="padding: 8px;"><a href="mailto:${esc(params.applicantEmail)}">${esc(params.applicantEmail)}</a></td></tr>
+          <tr><td style="padding: 8px; font-weight: bold;">Event:</td><td style="padding: 8px;">${esc(params.eventTitle)}</td></tr>
+          <tr style="background: #f5f5f5;"><td style="padding: 8px; font-weight: bold;">Format:</td><td style="padding: 8px;">${esc(params.format)}</td></tr>
         </table>
         <p style="margin-top: 24px; color: #666; font-size: 14px;">
           Diese Nachricht wurde automatisch von boogly.studio gesendet.
@@ -109,10 +119,10 @@ export async function sendContactNotification(params: {
     subject: `Neue Kontaktanfrage von ${params.name}`,
     htmlContent: `
       <h2>Neue Kontaktanfrage</h2>
-      <p><strong>Name:</strong> ${params.name}</p>
-      <p><strong>E-Mail:</strong> ${params.email}</p>
+      <p><strong>Name:</strong> ${esc(params.name)}</p>
+      <p><strong>E-Mail:</strong> ${esc(params.email)}</p>
       <p><strong>Nachricht:</strong></p>
-      <p>${params.message.replace(/\n/g, '<br>')}</p>
+      <p>${esc(params.message).replace(/\n/g, '<br>')}</p>
     `,
   })
 }

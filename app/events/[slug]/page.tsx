@@ -88,7 +88,7 @@ export default async function EventDetailPage({
             <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">
               {event.format}
             </p>
-            <h1 className="text-primary text-4xl sm:text-5xl font-black leading-tight mb-4">
+            <h1 className="font-display text-primary text-4xl sm:text-5xl font-extrabold leading-tight mb-4">
               {event.title}
             </h1>
             <p className="text-secondary text-xl leading-relaxed">
@@ -115,8 +115,8 @@ export default async function EventDetailPage({
 
           {/* ── Application form ── */}
           {isActive && !deadlinePassed ? (
-            <div className="border-t border-border pt-10">
-              <h2 className="text-primary text-3xl font-bold mb-2">Bewirb dich jetzt</h2>
+            <div id="bewerbung" className="border-t border-border pt-10 scroll-mt-24">
+              <h2 className="font-display text-primary text-3xl font-bold mb-2">Bewirb dich jetzt</h2>
               <p className="text-secondary mb-8">
                 Füll das Formular aus und zeig uns, wer du bist. Wir lesen jede Bewerbung persönlich.
               </p>

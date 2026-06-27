@@ -28,6 +28,7 @@ const schema = z.object({
   bio: z.string().min(20, 'Erzähl uns mehr über dich (min. 20 Zeichen)').max(2000),
   motivation: z.string().min(20, 'Erzähl uns warum du dabei sein möchtest (min. 20 Zeichen)').max(2000),
   themen: z.array(z.string()).min(1, 'Wähle mindestens ein Thema'),
+  consent: z.boolean().refine((v) => v === true, { message: 'Bitte stimme der Datenschutzerklärung zu.' }),
   website: z.string().optional(), // Honeypot
 })
 
@@ -51,7 +52,7 @@ export function ApplicationForm({ eventTitle, format, themes = DEFAULT_THEMES }:
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { themen: [] },
+    defaultValues: { themen: [], consent: false },
   })
 
   const selectedThemes = watch('themen') || []
@@ -227,17 +228,25 @@ export function ApplicationForm({ eventTitle, format, themes = DEFAULT_THEMES }:
         </div>
       )}
 
+      {/* Einwilligung */}
+      <div>
+        <label className="flex items-start gap-3 cursor-pointer">
+          <input {...register('consent')} type="checkbox" className="mt-1 w-4 h-4 flex-none accent-[#3B6EF6]" />
+          <span className="text-sm text-secondary">
+            Ich habe die{' '}
+            <a href="/datenschutz" target="_blank" className="underline hover:text-primary transition-colors">
+              Datenschutzerklärung
+            </a>{' '}
+            gelesen und willige ein, dass meine Angaben zur Bearbeitung meiner Bewerbung gespeichert und
+            verarbeitet werden. Diese Einwilligung kann ich jederzeit widerrufen. *
+          </span>
+        </label>
+        {errors.consent && <p className="form-error">{errors.consent.message}</p>}
+      </div>
+
       <Button type="submit" size="lg" loading={isSubmitting} className="w-full sm:w-auto">
         Bewerbung absenden →
       </Button>
-
-      <p className="text-muted text-xs">
-        Mit dem Absenden stimmst du unserer{' '}
-        <a href="/datenschutz" className="underline hover:text-secondary transition-colors">
-          Datenschutzerklärung
-        </a>{' '}
-        zu.
-      </p>
     </form>
   )
 }

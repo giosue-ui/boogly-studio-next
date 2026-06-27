@@ -19,7 +19,7 @@ export default async function EventsPage() {
         <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">
           Castings & Formate
         </p>
-        <h1 className="text-primary text-4xl sm:text-5xl font-black mb-4">
+        <h1 className="font-display text-primary text-4xl sm:text-5xl font-extrabold mb-4">
           Alle Events
         </h1>
         <p className="text-secondary text-lg max-w-2xl">

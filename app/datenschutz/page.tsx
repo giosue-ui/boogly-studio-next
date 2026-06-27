@@ -17,214 +17,194 @@ export default function DatenschutzPage() {
         ← Zurück
       </Link>
 
-      <h1
-        className="text-3xl font-bold mb-2"
-        style={{ fontFamily: '"Space Grotesk", sans-serif', color: 'var(--text)' }}
-      >
+      <h1 className="font-display text-3xl font-extrabold mb-2" style={{ color: 'var(--text)' }}>
         Datenschutzerklärung
       </h1>
-      <p className="text-xs mb-10" style={{ color: 'var(--hint, rgba(240,237,232,0.25))' }}>
+      <p className="text-xs mb-10" style={{ color: 'var(--dim)' }}>
         Stand: Juni 2026
       </p>
 
       <div className="space-y-10 text-sm leading-relaxed" style={{ color: 'var(--muted)' }}>
-
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            1. Verantwortlicher
-          </h2>
+        <Section title="1. Verantwortlicher">
           <p>
-            Giosuele Visalli<br />
-            Birkenwaldstraße 27<br />
-            70191 Stuttgart<br />
-            E-Mail:{' '}
-            <a href="mailto:hallo@boogly.studio" style={{ color: 'var(--accent)' }}>
-              hallo@boogly.studio
-            </a>
+            Verantwortlich für die Datenverarbeitung auf dieser Website ist:
+            <br />
+            <br />
+            Giosuele Visalli
+            <br />
+            Birkenwaldstraße 27
+            <br />
+            70191 Stuttgart, Deutschland
+            <br />
+            E-Mail: <Mail />
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            2. Hosting (Vercel)
-          </h2>
+        <Section title="2. Hosting (Vercel)">
           <p>
-            Diese Website wird bei Vercel Inc., 340 Pine Street, Suite 701, San Francisco,
-            CA 94104, USA gehostet. Beim Aufruf der Website werden automatisch technische Daten
-            (IP-Adresse, Browser, Uhrzeit, aufgerufene Seiten) in Server-Logfiles gespeichert.
-            Diese Daten sind für den Betrieb technisch notwendig und werden nicht mit anderen
-            Daten zusammengeführt. Die Übermittlung in die USA erfolgt auf Grundlage der
-            EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO).
-            Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.
+            Diese Website wird bei Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA gehostet.
+            Beim Aufruf werden automatisch technische Daten in Server-Logfiles verarbeitet: IP-Adresse,
+            Datum und Uhrzeit des Zugriffs, aufgerufene Seite, übertragene Datenmenge, Browser-Typ und
+            Betriebssystem. Diese Verarbeitung ist für den sicheren und stabilen Betrieb technisch
+            erforderlich. Logfiles werden in der Regel nach kurzer Zeit automatisch gelöscht.
+            Die Übermittlung in die USA stützt sich auf die EU-Standardvertragsklauseln
+            (Art. 46 Abs. 2 lit. c DSGVO). Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+            Interesse an einem funktionsfähigen Webauftritt).
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            3. Google Fonts
-          </h2>
+        <Section title="3. Verschlüsselung (TLS/SSL)">
           <p>
-            Diese Website lädt Schriftarten über Google Fonts von Google LLC,
-            1600 Amphitheatre Parkway, Mountain View, CA 94043, USA. Dabei wird deine
-            IP-Adresse beim Seitenaufruf an Google übermittelt. Die Einbindung erfolgt auf
-            Grundlage unseres berechtigten Interesses an einer einheitlichen Darstellung
-            (Art. 6 Abs. 1 lit. f DSGVO). Weitere Informationen:{' '}
-            <a
-              href="https://policies.google.com/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'var(--accent)' }}
-            >
-              policies.google.com/privacy
-            </a>
+            Diese Website nutzt aus Sicherheitsgründen eine TLS-/SSL-Verschlüsselung (erkennbar an
+            „https://" in der Adresszeile). Dadurch sind die zwischen deinem Browser und unserem Server
+            übertragenen Daten für Dritte nicht mitlesbar.
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            4. Inhalte & CMS (Sanity)
-          </h2>
+        <Section title="4. Schriftarten (selbst gehostet)">
           <p>
-            Die Inhalte dieser Website (Castings, Events) werden über Sanity.io verwaltet,
-            betrieben von Sanity AS, Strandveien 43, 1366 Lysaker, Norwegen. Sanity verarbeitet
-            Inhaltsdaten auf europäischen Servern. Bei normaler Nutzung der Website werden keine
-            personenbezogenen Daten an Sanity übermittelt.
-            Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.
+            Die auf dieser Website verwendeten Schriftarten werden <strong>lokal von unserem eigenen
+            Server</strong> ausgeliefert (Self-Hosting). Es findet <strong>keine Verbindung zu Google
+            Fonts</strong> oder anderen externen Anbietern statt, und es wird <strong>keine IP-Adresse
+            an Dritte übertragen</strong>.
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            5. Bewerbungsformular & Datenverarbeitung
-          </h2>
-          <p className="mb-4">
-            Wenn du dich über das Bewerbungsformular bewirbst, werden folgende Daten erhoben:
-            Vor- und Nachname, E-Mail-Adresse, Social-Media-Profile (Instagram, TikTok, YouTube),
-            Informationen zum gewählten Format sowie Freitexte (Vorstellung, Motivation, Themen).
-            Diese Daten werden ausschließlich zur Prüfung und Bearbeitung deiner Bewerbung genutzt.
-          </p>
-
-          <h3 className="font-semibold mb-2" style={{ color: 'var(--text)' }}>
-            5a. Brevo (E-Mail-Versand)
-          </h3>
-          <p className="mb-4">
-            Für den automatisierten Versand von Bestätigungs- und Annahme-E-Mails nutzen wir
-            Brevo (ehemals Sendinblue), angeboten von Brevo SAS, 55 rue d'Amsterdam, 75008 Paris,
-            Frankreich. Brevo ist ein EU-ansässiger Anbieter und verarbeitet deine E-Mail-Adresse
-            sowie deinen Namen ausschließlich auf europäischen Servern — ein Drittlandtransfer
-            findet nicht statt. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.{' '}
-            <a
-              href="https://www.brevo.com/de/legal/privacypolicy/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'var(--accent)' }}
-            >
-              Datenschutzerklärung von Brevo
-            </a>
-          </p>
-
-          <h3 className="font-semibold mb-2" style={{ color: 'var(--text)' }}>
-            5b. Airtable (Bewerberdatenbank)
-          </h3>
+        <Section title="5. Inhalte & CMS (Sanity)">
           <p>
-            Deine Bewerbungsdaten werden in einer Airtable-Datenbank gespeichert. Airtable wird
-            betrieben von Formagrid Inc. (Airtable), 799 Market Street, San Francisco, CA 94103,
-            USA. Die Übermittlung in die USA erfolgt auf Grundlage der EU-Standardvertragsklauseln.
-            Deine Daten werden nach Abschluss des Bewerbungsverfahrens, spätestens nach 12 Monaten,
-            gelöscht. Auf Wunsch löschen wir deine Daten jederzeit vorzeitig —
-            schreib uns an{' '}
-            <a href="mailto:hallo@boogly.studio" style={{ color: 'var(--accent)' }}>
-              hallo@boogly.studio
-            </a>.{' '}
-            <a
-              href="https://www.airtable.com/privacy"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'var(--accent)' }}
-            >
-              Datenschutzerklärung von Airtable
-            </a>
+            Die redaktionellen Inhalte dieser Website (z. B. Castings, Events, Texte, Bilder) werden mit
+            dem Content-Management-System Sanity verwaltet, betrieben von Sanity AS, Strandveien 43,
+            1366 Lysaker, Norwegen. Beim Laden von Bildern stellt dein Browser eine Verbindung zum
+            Sanity-Content-Netzwerk (cdn.sanity.io) her, wobei deine IP-Adresse übertragen wird. Eine
+            Verarbeitung kann auch auf Servern außerhalb der EU (u. a. USA) erfolgen; in diesem Fall
+            stützt sie sich auf die EU-Standardvertragsklauseln. Rechtsgrundlage: Art. 6 Abs. 1 lit. f
+            DSGVO (berechtigtes Interesse an der Bereitstellung der Inhalte).{' '}
+            <Ext href="https://www.sanity.io/legal/privacy">Datenschutzerklärung von Sanity</Ext>
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            6. Rechtsgrundlage für die Bewerbungsverarbeitung
-          </h2>
+        <Section title="6. Bewerbungsformular">
+          <p className="mb-3">
+            Wenn du dich über das Bewerbungsformular bewirbst, erheben wir: Vor- und Nachname,
+            E-Mail-Adresse, Social-Media-Profile (Instagram, optional TikTok/YouTube), das gewählte
+            Format/Event, ausgewählte Themen sowie deine Freitexte (Vorstellung, Motivation). Diese
+            Daten nutzen wir ausschließlich zur Prüfung und Bearbeitung deiner Bewerbung.
+          </p>
+          <p className="mb-3">
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung/Durchführung eines
+            (vor-)vertraglichen Verhältnisses) sowie deine Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO,
+            die du durch Ankreuzen der Einwilligungs-Checkbox im Formular erteilst. Du kannst deine
+            Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen (E-Mail an <Mail />).
+          </p>
           <p>
-            Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung eines Vertragsverhältnisses)
-            sowie deine ausdrückliche Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO, die du durch
-            Ankreuzen der Einwilligungserklärung im Formular erteilst. Du kannst deine Einwilligung
-            jederzeit mit Wirkung für die Zukunft widerrufen.
+            Deine Bewerbungsdaten werden nach Abschluss des jeweiligen Bewerbungsverfahrens, spätestens
+            jedoch nach 12 Monaten, gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten
+            entgegenstehen oder du einer längeren Speicherung zustimmst.
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            7. Kontakt per E-Mail
-          </h2>
+        <Section title="7. Kontaktformular & Kontakt per E-Mail">
           <p>
-            Wenn du uns per E-Mail kontaktierst, werden deine Angaben zur Bearbeitung deiner
-            Anfrage gespeichert. Diese Daten geben wir nicht ohne deine Einwilligung weiter.
-            Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.
+            Wenn du uns über das Kontaktformular oder per E-Mail kontaktierst, verarbeiten wir die von
+            dir gemachten Angaben (Name, E-Mail-Adresse, Nachricht) zur Bearbeitung deiner Anfrage. Die
+            Daten werden über unseren E-Mail-Dienstleister Brevo (siehe Ziff. 8) an uns zugestellt.
+            Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (bei vertragsbezogenen Anfragen) bzw.
+            Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung). Wir speichern diese
+            Daten, bis die Anfrage abschließend bearbeitet ist und keine gesetzlichen
+            Aufbewahrungspflichten entgegenstehen.
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            8. Externe Links / Social Media
-          </h2>
+        <Section title="8. E-Mail-Versand (Brevo)">
           <p>
-            Diese Website enthält Links zu YouTube (Google LLC), Instagram und TikTok. Beim Klick
-            auf diese Links verlässt du unsere Website. Für die Datenverarbeitung auf den
-            verlinkten Seiten sind die jeweiligen Anbieter verantwortlich.
+            Für den Versand von Bestätigungs- und Benachrichtigungs-E-Mails nutzen wir Brevo, angeboten
+            von Brevo SAS, 106 boulevard Haussmann, 75008 Paris, Frankreich. Brevo verarbeitet die für
+            den Versand erforderlichen Daten (insb. Name und E-Mail-Adresse) auf Servern innerhalb der
+            EU. Rechtsgrundlage: Art. 6 Abs. 1 lit. b und lit. f DSGVO.{' '}
+            <Ext href="https://www.brevo.com/de/legal/privacypolicy/">Datenschutzerklärung von Brevo</Ext>
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            9. Cookies & Tracking
-          </h2>
+        <Section title="9. Bewerberdatenbank (Airtable)">
           <p>
-            Diese Website setzt keine Tracking-Cookies und verwendet keine Analytics-Dienste
-            (kein Google Analytics, kein Retargeting).
+            Eingegangene Bewerbungen speichern wir in einer Airtable-Datenbank. Airtable wird betrieben
+            von Formagrid Inc. (Airtable), 799 Market Street, San Francisco, CA 94103, USA. Die
+            Übermittlung in die USA stützt sich auf die EU-Standardvertragsklauseln. Rechtsgrundlage:
+            Art. 6 Abs. 1 lit. b und lit. a DSGVO.{' '}
+            <Ext href="https://www.airtable.com/company/privacy">Datenschutzerklärung von Airtable</Ext>
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            10. Deine Rechte
-          </h2>
+        <Section title="10. Verwaltungsbereich (Studio)">
           <p>
-            Du hast das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17),
-            Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und
-            Widerspruch (Art. 21 DSGVO). Wende dich dazu jederzeit an:{' '}
-            <a href="mailto:hallo@boogly.studio" style={{ color: 'var(--accent)' }}>
-              hallo@boogly.studio
-            </a>
+            Der nicht-öffentliche Verwaltungsbereich (/studio) ist nur für autorisierte Redakteure nach
+            Anmeldung zugänglich und setzt hierfür technisch notwendige Funktions-Cookies bzw. lokalen
+            Speicher. Für normale Besucher der Website werden dort keine Daten verarbeitet.
           </p>
-        </section>
+        </Section>
 
-        <section>
-          <h2 className="font-semibold text-base mb-3" style={{ color: 'var(--text)' }}>
-            11. Beschwerderecht
-          </h2>
+        <Section title="11. Externe Links / Social Media">
           <p>
-            Du hast das Recht, dich bei der zuständigen Datenschutz-Aufsichtsbehörde zu
-            beschweren. In Baden-Württemberg ist das der Landesbeauftragte für den Datenschutz
-            und die Informationsfreiheit (LfDI BW), Lautenschlagerstraße 20, 70173 Stuttgart,{' '}
-            <a
-              href="https://www.baden-wuerttemberg.datenschutz.de"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'var(--accent)' }}
-            >
-              www.baden-wuerttemberg.datenschutz.de
-            </a>
+            Diese Website enthält Verlinkungen zu YouTube (Google Ireland Ltd.), Instagram und TikTok.
+            Es werden <strong>keine Inhalte dieser Dienste eingebettet</strong> – es handelt sich um
+            einfache Links. Erst beim Klick verlässt du unsere Website; ab dann sind die jeweiligen
+            Anbieter für die Datenverarbeitung verantwortlich.
           </p>
-        </section>
+        </Section>
 
+        <Section title="12. Cookies & Tracking">
+          <p>
+            Diese Website setzt <strong>keine</strong> Tracking- oder Marketing-Cookies und verwendet
+            <strong> keine</strong> Analyse-Dienste (kein Google Analytics, kein Retargeting). Es findet
+            kein Profiling und keine automatisierte Entscheidungsfindung statt.
+          </p>
+        </Section>
+
+        <Section title="13. Deine Rechte">
+          <p>
+            Du hast jederzeit das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung
+            (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie
+            Widerspruch gegen die Verarbeitung (Art. 21 DSGVO). Erteilte Einwilligungen kannst du
+            jederzeit mit Wirkung für die Zukunft widerrufen. Wende dich dazu an <Mail />.
+          </p>
+        </Section>
+
+        <Section title="14. Beschwerderecht">
+          <p>
+            Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Zuständig ist
+            der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg
+            (LfDI BW), Lautenschlagerstraße 20, 70173 Stuttgart.{' '}
+            <Ext href="https://www.baden-wuerttemberg.datenschutz.de">www.baden-wuerttemberg.datenschutz.de</Ext>
+          </p>
+        </Section>
       </div>
     </div>
+  )
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section>
+      <h2 className="font-display font-bold text-base mb-3" style={{ color: 'var(--text)' }}>
+        {title}
+      </h2>
+      {children}
+    </section>
+  )
+}
+
+function Mail() {
+  return (
+    <a href="mailto:hallo@boogly.studio" style={{ color: 'var(--blue)' }}>
+      hallo@boogly.studio
+    </a>
+  )
+}
+
+function Ext({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)' }}>
+      {children}
+    </a>
   )
 }

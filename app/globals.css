@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Fonts werden über next/font selbst gehostet (siehe app/layout.tsx).
+   Keine externe Google-Fonts-Anfrage → kein IP-Transfer an Google (DSGVO). */
 
 @tailwind base;
 @tailwind components;
@@ -7,17 +8,36 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --black: #0c0c0c;
-    --surface: #161616;
-    --surface2: #1e1e1e;
-    --border: rgba(255,255,255,0.07);
-    --border-hover: rgba(255,255,255,0.15);
-    --accent: #c8f55a;
-    --accent-bg: rgba(200,245,90,0.1);
-    --accent-border: rgba(200,245,90,0.25);
-    --text: #f0ede8;
-    --muted: rgba(240,237,232,0.5);
-    --hint: rgba(240,237,232,0.25);
+
+    /* ── Design-Tokens (Website A) ───────────────────────────── */
+    --ink: #0e0e12; /* Hintergrund */
+    --black: #0e0e12; /* Alias (Rückwärtskompatibilität) */
+    --carbon: #16161c; /* Karten */
+    --surface: #16161c;
+    --surface2: #1f1f28;
+    --line: #2b2b36; /* Rahmen */
+    --border: #2b2b36;
+    --border-hover: #39394a;
+
+    --paper: #f4f2ec; /* Überschriften / hell */
+    --text: #f4f2ec;
+    --body: #b9b9c2; /* Fließtext */
+    --mist: #9a9aa6; /* sekundär */
+    --muted: #9a9aa6;
+    --dim: #6e6e7a; /* Meta */
+    --hint: #6e6e7a;
+
+    --blue: #3b6ef6; /* Primär */
+    --accent: #3b6ef6;
+    --blue-deep: #1c3aa8;
+    --blue-tint: #8fb0ff;
+    --accent-bg: rgba(59, 110, 246, 0.1);
+    --accent-border: rgba(59, 110, 246, 0.25);
+
+    --green: #54d98c; /* Akzent / CTA */
+    --green-ink: #08361f;
+
+    /* Font-Stacks werden von next/font gesetzt (--font-display / --font-text / --font-mono) */
   }
 
   * {
@@ -32,12 +52,20 @@
 
   body {
     @apply bg-background text-primary font-sans;
-    line-height: 1.65;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
   }
 
   ::selection {
-    background: var(--accent);
-    color: #0c0c0c;
+    background: var(--blue);
+    color: #fff;
   }
 
   /* Scrollbar */
@@ -45,17 +73,26 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--black);
+    background: var(--ink);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 9999px;
   }
 }
 
 @layer components {
   .container {
-    @apply mx-auto max-w-container px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-container px-6 sm:px-8 lg:px-10;
+  }
+
+  /* Mono-Label über Headlines */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
   }
 
   /* Prose-Stile für Sanity Rich Text */
@@ -64,9 +101,11 @@
   }
   .prose-boogly h2 {
     @apply text-primary text-2xl font-bold mt-8 mb-4;
+    font-family: var(--font-display);
   }
   .prose-boogly h3 {
     @apply text-primary text-xl font-semibold mt-6 mb-3;
+    font-family: var(--font-display);
   }
   .prose-boogly p {
     @apply mb-4;
@@ -74,19 +113,21 @@
   .prose-boogly strong {
     @apply text-primary font-semibold;
   }
+  .prose-boogly a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
 
-  /* Form elements */
+  /* Formularelemente */
   .form-input {
     @apply w-full bg-surface-2 border border-border rounded-xl px-4 py-3
            text-primary placeholder-muted
            focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent
            transition-all duration-200;
   }
-
   .form-label {
     @apply block text-sm font-medium text-secondary mb-2;
   }
-
   .form-error {
     @apply text-red-400 text-sm mt-1;
   }
@@ -94,16 +135,38 @@
 
 @layer utilities {
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
-
   .animate-marquee {
-    animation: marquee 30s linear infinite;
+    animation: marquee 42s linear infinite;
   }
 
+  /* Signatur-Effekte aus Website A */
+  .dot-grid {
+    background-image: radial-gradient(circle at center, rgba(59, 110, 246, 0.16) 1.4px, transparent 2px);
+    background-size: 30px 30px;
+  }
+  .hero-radial {
+    background: radial-gradient(900px 520px at 50% -5%, #1a2440 0%, var(--ink) 62%);
+  }
+  .cta-rings {
+    background: repeating-radial-gradient(
+      circle at 50% 50%,
+      transparent 0 9px,
+      rgba(59, 110, 246, 0.14) 9px 11px,
+      transparent 11px 30px
+    );
+  }
+  .tape {
+    background: repeating-linear-gradient(-45deg, var(--green) 0 14px, var(--ink) 14px 30px);
+  }
   .text-gradient {
-    background: linear-gradient(135deg, #c8f55a, #e8ff90);
+    background: linear-gradient(135deg, var(--blue), var(--blue-tint));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

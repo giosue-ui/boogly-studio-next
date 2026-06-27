@@ -10,6 +10,7 @@ const schema = z.object({
   name: z.string().min(2, 'Name ist zu kurz'),
   email: z.string().email('Bitte eine gültige E-Mail-Adresse eingeben'),
   message: z.string().min(10, 'Nachricht ist zu kurz (min. 10 Zeichen)').max(5000),
+  consent: z.boolean().refine((v) => v === true, { message: 'Bitte stimme der Datenschutzerklärung zu.' }),
   website: z.string().optional(), // Honeypot
 })
 
@@ -23,7 +24,7 @@ export function ContactForm() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<FormData>({ resolver: zodResolver(schema) })
+  } = useForm<FormData>({ resolver: zodResolver(schema), defaultValues: { consent: false } })
 
   const onSubmit = async (data: FormData) => {
     setServerError('')
@@ -80,6 +81,25 @@ export function ContactForm() {
           placeholder="Womit können wir dir helfen?"
         />
         {errors.message && <p className="form-error">{errors.message.message}</p>}
+      </div>
+
+      {/* Einwilligung */}
+      <div>
+        <label className="flex items-start gap-3 cursor-pointer">
+          <input
+            {...register('consent')}
+            type="checkbox"
+            className="mt-1 w-4 h-4 flex-none accent-[#3B6EF6]"
+          />
+          <span className="text-sm text-secondary">
+            Ich habe die{' '}
+            <a href="/datenschutz" target="_blank" className="underline hover:text-primary transition-colors">
+              Datenschutzerklärung
+            </a>{' '}
+            gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung der Anfrage einverstanden. *
+          </span>
+        </label>
+        {errors.consent && <p className="form-error">{errors.consent.message}</p>}
       </div>
 
       {serverError && (

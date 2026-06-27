@@ -17,10 +17,7 @@ export default function ImpressumPage() {
         ← Zurück
       </Link>
 
-      <h1
-        className="text-3xl font-bold mb-10"
-        style={{ fontFamily: '"Space Grotesk", sans-serif', color: 'var(--text)' }}
-      >
+      <h1 className="font-display text-3xl font-extrabold mb-10" style={{ color: 'var(--text)' }}>
         Impressum
       </h1>
 
