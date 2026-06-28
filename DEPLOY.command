@@ -8,7 +8,7 @@ echo "────────────────────────�
 echo "  Boogly Studio — Deployment"
 echo "──────────────────────────────────────────────"
 git add -A
-git commit -m "Update: grosse Hero-Augen entfernt" 2>&1 | tail -2
+git commit -m "Farben: Markenpalette uebernommen (Koralle/Creme/warmes Schwarz)" 2>&1 | tail -2
 git fetch origin main 2>&1 | tail -1
 git merge -X ours --no-edit origin/main >/dev/null 2>&1
 echo "Lade zu GitHub hoch…"

@@ -30,12 +30,12 @@ export function AboutCard({ eyebrow, headline, paragraphs, stats }: AboutProps) 
     <section className="section px-6 sm:px-10 py-[104px] max-w-container mx-auto" id="ueber-uns">
       <div
         className="relative overflow-hidden rounded-[28px] p-9 sm:p-[58px] grid md:grid-cols-[1.1fr_1fr] gap-10 md:gap-[54px] items-center"
-        style={{ background: 'linear-gradient(135deg,#16161d,#101015)', border: '1px solid var(--line)' }}
+        style={{ background: 'linear-gradient(135deg,#242320,#1a1a18)', border: '1px solid var(--line)' }}
       >
         {/* „oo"-Textur */}
         <div
           className="absolute -right-8 -top-10 font-display font-extrabold text-[120px] leading-[0.8] w-[240px] break-all opacity-50 pointer-events-none select-none"
-          style={{ color: '#1F2C57', letterSpacing: '.04em' }}
+          style={{ color: '#3a2a20', letterSpacing: '.04em' }}
           aria-hidden
         >
           oo oooo oo oooooo oo oo oooo oo

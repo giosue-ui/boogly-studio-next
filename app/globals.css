@@ -9,33 +9,35 @@
   :root {
     color-scheme: dark;
 
-    /* ── Design-Tokens (Website A) ───────────────────────────── */
-    --ink: #0e0e12; /* Hintergrund */
-    --black: #0e0e12; /* Alias (Rückwärtskompatibilität) */
-    --carbon: #16161c; /* Karten */
-    --surface: #16161c;
-    --surface2: #1f1f28;
-    --line: #2b2b36; /* Rahmen */
-    --border: #2b2b36;
-    --border-hover: #39394a;
+    /* ── Design-Tokens (Markenpalette „Logo Concepts") ────────────
+       Nur die Farbwerte wurden getauscht; die Token-Namen bleiben gleich,
+       damit Layout & Komponenten unverändert sind und nur die Farben wechseln. */
+    --ink: #1a1a18; /* warmes Schwarz — Hintergrund */
+    --black: #1a1a18; /* Alias */
+    --carbon: #232220; /* Karten (warm) */
+    --surface: #232220;
+    --surface2: #2c2a27;
+    --line: #34322d; /* Rahmen (warm) */
+    --border: #34322d;
+    --border-hover: #45413a;
 
-    --paper: #f4f2ec; /* Überschriften / hell */
-    --text: #f4f2ec;
-    --body: #b9b9c2; /* Fließtext */
-    --mist: #9a9aa6; /* sekundär */
-    --muted: #9a9aa6;
-    --dim: #6e6e7a; /* Meta */
-    --hint: #6e6e7a;
+    --paper: #f2eee4; /* Creme — Überschriften / hell */
+    --text: #f2eee4;
+    --body: #c4beb2; /* Fließtext (warm) */
+    --mist: #9a948a; /* sekundär (warm) */
+    --muted: #9a948a;
+    --dim: #7c776d; /* Meta */
+    --hint: #7c776d;
 
-    --blue: #3b6ef6; /* Primär */
-    --accent: #3b6ef6;
-    --blue-deep: #1c3aa8;
-    --blue-tint: #8fb0ff;
-    --accent-bg: rgba(59, 110, 246, 0.1);
-    --accent-border: rgba(59, 110, 246, 0.25);
+    --blue: #fb4d26; /* Primär-Akzent = Koralle (Name bleibt --blue) */
+    --accent: #fb4d26;
+    --blue-deep: #c2350f;
+    --blue-tint: #ff8a6b;
+    --accent-bg: rgba(251, 77, 38, 0.1);
+    --accent-border: rgba(251, 77, 38, 0.25);
 
-    --green: #54d98c; /* Akzent / CTA */
-    --green-ink: #08361f;
+    --green: #2f55f0; /* Sekundär-Akzent = Blau (Name bleibt --green) */
+    --green-ink: #f2eee4;
 
     /* Font-Stacks werden von next/font gesetzt (--font-display / --font-text / --font-mono) */
   }
@@ -148,17 +150,17 @@
 
   /* Signatur-Effekte aus Website A */
   .dot-grid {
-    background-image: radial-gradient(circle at center, rgba(59, 110, 246, 0.16) 1.4px, transparent 2px);
+    background-image: radial-gradient(circle at center, rgba(251, 77, 38, 0.16) 1.4px, transparent 2px);
     background-size: 30px 30px;
   }
   .hero-radial {
-    background: radial-gradient(900px 520px at 50% -5%, #1a2440 0%, var(--ink) 62%);
+    background: radial-gradient(900px 520px at 50% -5%, #341c14 0%, var(--ink) 62%);
   }
   .cta-rings {
     background: repeating-radial-gradient(
       circle at 50% 50%,
       transparent 0 9px,
-      rgba(59, 110, 246, 0.14) 9px 11px,
+      rgba(251, 77, 38, 0.14) 9px 11px,
       transparent 11px 30px
     );
   }

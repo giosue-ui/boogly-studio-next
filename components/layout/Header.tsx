@@ -35,7 +35,7 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
   return (
     <header
       className="sticky top-0 z-[60] border-b backdrop-blur-md"
-      style={{ background: 'rgba(14,14,18,0.82)', borderColor: 'var(--line)' }}
+      style={{ background: 'rgba(26,26,24,0.82)', borderColor: 'var(--line)' }}
     >
       <div className="flex items-center justify-between px-6 sm:px-10 py-4">
         <Logo brand={brandName} suffix={brandSuffix} size={25} />

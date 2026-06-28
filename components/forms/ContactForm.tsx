@@ -89,7 +89,7 @@ export function ContactForm() {
           <input
             {...register('consent')}
             type="checkbox"
-            className="mt-1 w-4 h-4 flex-none accent-[#3B6EF6]"
+            className="mt-1 w-4 h-4 flex-none accent-[#FB4D26]"
           />
           <span className="text-sm text-secondary">
             Ich habe die{' '}

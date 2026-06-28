@@ -231,7 +231,7 @@ export function ApplicationForm({ eventTitle, format, themes = DEFAULT_THEMES }:
       {/* Einwilligung */}
       <div>
         <label className="flex items-start gap-3 cursor-pointer">
-          <input {...register('consent')} type="checkbox" className="mt-1 w-4 h-4 flex-none accent-[#3B6EF6]" />
+          <input {...register('consent')} type="checkbox" className="mt-1 w-4 h-4 flex-none accent-[#FB4D26]" />
           <span className="text-sm text-secondary">
             Ich habe die{' '}
             <a href="/datenschutz" target="_blank" className="underline hover:text-primary transition-colors">

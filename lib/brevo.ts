@@ -84,7 +84,7 @@ export async function sendApplicationNotification(params: {
     subject: `🎬 Neue Bewerbung: ${params.applicantName} – ${params.eventTitle}`,
     htmlContent: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #54d98c; background: #0e0e12; padding: 16px; border-radius: 8px;">
+        <h2 style="color: #fb4d26; background: #1a1a18; padding: 16px; border-radius: 8px;">
           Neue Bewerbung eingegangen
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">

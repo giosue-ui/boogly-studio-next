@@ -15,27 +15,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Flächen
-        background: '#0E0E12', // ink
-        surface: '#16161C', // carbon
-        'surface-2': '#1F1F28',
-        border: '#2B2B36', // line
-        'border-hover': '#39394A',
-        // Text
-        primary: '#F4F2EC', // paper
-        secondary: '#B9B9C2', // body
-        muted: '#9A9AA6', // mist
-        dim: '#6E6E7A',
-        // Primärfarbe Blau
-        accent: '#3B6EF6', // blue
-        'accent-hover': '#2F5FE0',
-        'accent-deep': '#1C3AA8',
-        'accent-tint': '#8FB0FF', // blue-tint
-        'accent-subtle': 'rgba(59,110,246,0.10)',
-        'accent-border': 'rgba(59,110,246,0.25)',
-        // Akzent Grün (CTA / Tape)
-        green: '#54D98C',
-        'green-ink': '#08361F',
+        // Flächen (warm)
+        background: '#1A1A18', // ink
+        surface: '#232220', // carbon
+        'surface-2': '#2C2A27',
+        border: '#34322D', // line
+        'border-hover': '#45413A',
+        // Text (warm)
+        primary: '#F2EEE4', // paper / creme
+        secondary: '#C4BEB2', // body
+        muted: '#9A948A', // mist
+        dim: '#7C776D',
+        // Primärfarbe = Koralle (Name 'accent' bleibt)
+        accent: '#FB4D26',
+        'accent-hover': '#E63E18',
+        'accent-deep': '#C2350F',
+        'accent-tint': '#FF8A6B',
+        'accent-subtle': 'rgba(251,77,38,0.10)',
+        'accent-border': 'rgba(251,77,38,0.25)',
+        // Sekundär-Akzent = Blau (Name 'green' bleibt, für CTA / Tape)
+        green: '#2F55F0',
+        'green-ink': '#F2EEE4',
       },
       fontFamily: {
         // Selbst gehostete Fonts via next/font (CSS-Variablen, kein Google-Request)
