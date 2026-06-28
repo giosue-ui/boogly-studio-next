@@ -15,7 +15,7 @@ echo "Lade zu GitHub hoch…"
 PUSH_OUT=$(git push origin main 2>&1)
 echo "$PUSH_OUT" | tail -5
 echo ""
-if echo "$PUSH_OUT" | grep -qiE "rejected|error|violation"; then
+if echo "$PUSH_OUT" | grep -qiE "rejected|error|violation|fatal|fail|not supported"; then
   echo "⚠️  Push NICHT erfolgreich — bitte Claude zeigen."
 else
   echo "✅ ERFOLG: Auf GitHub. Vercel deployt jetzt automatisch."
