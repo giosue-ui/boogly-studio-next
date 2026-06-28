@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/studio', '/api'],
     },
-    sitemap: 'https://boogly.studio/sitemap.xml',
-    host: 'https://boogly.studio',
+    sitemap: 'https://www.boogly.studio/sitemap.xml',
+    host: 'https://www.boogly.studio',
   }
 }

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllEventSlugs, getAllPageSlugs } from '@/lib/sanity/queries'
 
-const BASE = 'https://boogly.studio'
+const BASE = 'https://www.boogly.studio'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()

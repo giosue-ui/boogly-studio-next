@@ -12,8 +12,8 @@ const fontText = Hanken_Grotesk({ subsets: ['latin'], variable: '--font-text', d
 const fontMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' })
 
 export const metadata: Metadata = {
-  // Hauptdomain fest auf boogly.studio (Basis für OG-URLs & Sitemap)
-  metadataBase: new URL('https://boogly.studio'),
+  // Kanonische Domain fest auf www.boogly.studio (Basis für OG-URLs & Sitemap)
+  metadataBase: new URL('https://www.boogly.studio'),
   title: {
     default: 'Boogly Studio – Echte Menschen. Echte Begegnungen.',
     template: '%s | Boogly Studio',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'de_DE',
-    url: 'https://boogly.studio',
+    url: 'https://www.boogly.studio',
     siteName: 'Boogly Studio',
     images: [
       {
