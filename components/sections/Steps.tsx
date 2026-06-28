@@ -34,7 +34,7 @@ export function Steps({
             className="rounded-[22px] p-8 sm:p-9 transition-all duration-200 hover:-translate-y-[3px]"
             style={{ background: 'var(--carbon)', border: '1px solid var(--line)' }}
           >
-            <div className="font-display text-[46px] font-extrabold leading-none" style={{ color: 'var(--blue)' }}>{s.num}</div>
+            <div className="font-display text-[46px] font-extrabold leading-none" style={{ color: 'var(--text)' }}>{s.num}</div>
             <h3 className="font-display text-[21px] font-bold text-primary mt-4 mb-2.5">{s.title}</h3>
             <p className="text-muted text-[15.5px]">{s.text}</p>
           </div>

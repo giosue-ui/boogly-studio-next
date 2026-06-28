@@ -15,26 +15,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Flächen (warm)
-        background: '#1A1A18', // ink
-        surface: '#232220', // carbon
-        'surface-2': '#2C2A27',
-        border: '#34322D', // line
-        'border-hover': '#45413A',
-        // Text (warm)
-        primary: '#F2EEE4', // paper / creme
-        secondary: '#C4BEB2', // body
-        muted: '#9A948A', // mist
-        dim: '#7C776D',
-        // Primärfarbe = Koralle (Name 'accent' bleibt)
+        // Flächen (helles Theme)
+        background: '#F2EEE4', // creme
+        surface: '#FCFAF4', // warmes Weiß (Karten)
+        'surface-2': '#FFFFFF',
+        border: '#E3DCCC',
+        'border-hover': '#CFC6B2',
+        // Text (dunkel dominant)
+        primary: '#1A1A18',
+        secondary: '#555049',
+        muted: '#837E73',
+        dim: '#9A948A',
+        // Akzent = Koralle (sparsam)
         accent: '#FB4D26',
         'accent-hover': '#E63E18',
         'accent-deep': '#C2350F',
         'accent-tint': '#FF8A6B',
         'accent-subtle': 'rgba(251,77,38,0.10)',
-        'accent-border': 'rgba(251,77,38,0.25)',
-        // Sekundär-Akzent = Blau (Name 'green' bleibt, für CTA / Tape)
-        green: '#2F55F0',
+        'accent-border': 'rgba(251,77,38,0.22)',
+        // 'green' = ebenfalls Koralle (Name bleibt, für CTA / Tape)
+        green: '#FB4D26',
         'green-ink': '#F2EEE4',
       },
       fontFamily: {

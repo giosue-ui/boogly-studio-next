@@ -31,7 +31,7 @@ export default async function FAQPage() {
         <div className="rounded-3xl p-10 text-center" style={{ background: 'var(--carbon)', border: '1px solid var(--line)' }}>
           <h2 className="font-display text-primary text-2xl font-bold mb-3">Noch eine Frage?</h2>
           <p className="text-secondary mb-6">Schreib uns direkt – wir antworten innerhalb von 24 Stunden.</p>
-          <Link href="/kontakt" className="inline-block text-sm font-semibold px-6 py-3 rounded-full transition-colors bg-accent hover:bg-accent-hover text-white">
+          <Link href="/kontakt" className="inline-block text-sm font-semibold px-6 py-3 rounded-full transition-colors bg-[#1A1A18] hover:bg-black text-[#F2EEE4]">
             Kontakt aufnehmen →
           </Link>
         </div>

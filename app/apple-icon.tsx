@@ -17,7 +17,7 @@ const eye = (justify: 'flex-start' | 'flex-end' | 'center', align: 'flex-start' 
       padding: 9,
     }}
   >
-    <div style={{ width: 25, height: 25, borderRadius: 25, background: '#FB4D26' }} />
+    <div style={{ width: 25, height: 25, borderRadius: 25, background: '#F2EEE4' }} />
   </div>
 )
 
@@ -32,7 +32,7 @@ export default function AppleIcon() {
           alignItems: 'center',
           justifyContent: 'center',
           gap: 16,
-          background: '#FB4D26',
+          background: '#F2EEE4',
           borderRadius: 40,
         }}
       >

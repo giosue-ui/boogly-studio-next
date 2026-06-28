@@ -22,9 +22,11 @@ interface ButtonProps {
 }
 
 const variantClasses: Record<Variant, string> = {
-  primary: 'bg-accent hover:bg-accent-hover text-white font-semibold hover:-translate-y-px',
+  // Primär = dunkel (dominant)
+  primary: 'bg-[#1A1A18] hover:bg-black text-[#F2EEE4] font-semibold hover:-translate-y-px',
+  // green = Koralle-Akzent (sparsam, z. B. Schluss-CTA)
   green: 'bg-green text-green-ink font-bold hover:brightness-105 hover:-translate-y-px',
-  ghost: 'border border-border text-primary hover:border-muted hover:bg-white/[0.03] font-semibold',
+  ghost: 'border border-border text-primary hover:border-muted hover:bg-black/[0.04] font-semibold',
   secondary: 'bg-surface-2 hover:bg-border text-primary border border-border font-medium',
 }
 

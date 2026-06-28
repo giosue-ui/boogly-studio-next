@@ -35,7 +35,7 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
   return (
     <header
       className="sticky top-0 z-[60] border-b backdrop-blur-md"
-      style={{ background: 'rgba(26,26,24,0.82)', borderColor: 'var(--line)' }}
+      style={{ background: 'rgba(242,238,228,0.82)', borderColor: 'var(--line)' }}
     >
       <div className="flex items-center justify-between px-6 sm:px-10 py-4">
         <Logo brand={brandName} suffix={brandSuffix} size={25} />
@@ -75,7 +75,7 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
           href={ctaUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white font-semibold text-[15px] px-[22px] py-2.5 rounded-full transition-colors whitespace-nowrap"
+          className="hidden md:inline-flex items-center gap-2 bg-[#1A1A18] hover:bg-black text-[#F2EEE4] font-semibold text-[15px] px-[22px] py-2.5 rounded-full transition-colors whitespace-nowrap"
         >
           {ctaLabel}
         </a>
@@ -110,7 +110,7 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
             href={ctaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-sm font-semibold px-4 py-3 mt-2 rounded-full text-center bg-accent text-white"
+            className="block text-sm font-semibold px-4 py-3 mt-2 rounded-full text-center bg-[#1A1A18] text-[#F2EEE4]"
             onClick={() => setMenuOpen(false)}
           >
             {ctaLabel}
