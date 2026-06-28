@@ -24,6 +24,7 @@ const DEFAULT_NAV: NavItem[] = [
 
 const DEFAULT_CTA = { label: '▶ Jetzt schauen', url: 'https://youtube.com/@BooglyStudio' }
 
+// Dunkler Header mit hellem Inhalt (Rahmen um den hellen Seiteninhalt).
 export function Header({ settings }: { settings?: SiteSettings | null }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const nav = settings?.nav?.length ? settings.nav : DEFAULT_NAV
@@ -35,24 +36,24 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
   return (
     <header
       className="sticky top-0 z-[60] border-b backdrop-blur-md"
-      style={{ background: 'rgba(242,238,228,0.82)', borderColor: 'var(--line)' }}
+      style={{ background: 'rgba(20,20,18,0.9)', borderColor: 'rgba(255,255,255,0.08)' }}
     >
       <div className="flex items-center justify-between px-6 sm:px-10 py-4">
-        <Logo brand={brandName} suffix={brandSuffix} size={25} />
+        <Logo brand={brandName} suffix={brandSuffix} size={25} onDark />
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-9">
           {nav.map((item) =>
             item.children?.length ? (
               <div key={item.label} className="relative group">
-                <button className="flex items-center gap-1.5 text-[15px] font-medium text-primary hover:text-accent-tint transition-colors">
+                <button className="flex items-center gap-1.5 text-[15px] font-medium text-[#F2EEE4] hover:text-[#FF8A6B] transition-colors">
                   {item.label} <span className="text-xs">▾</span>
                 </button>
                 <div
                   className="absolute top-[calc(100%+16px)] left-1/2 -translate-x-1/2 translate-y-2 min-w-[268px] p-2.5 rounded-2xl
                              opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
                              transition-all duration-200"
-                  style={{ background: 'var(--carbon)', border: '1px solid var(--line)', boxShadow: '0 22px 50px rgba(0,0,0,.5)' }}
+                  style={{ background: '#232220', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 22px 50px rgba(0,0,0,.5)' }}
                 >
                   {item.children.map((child) => (
                     <DropdownLink key={child.label} href={child.href} label={child.label} />
@@ -63,7 +64,7 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
               <Link
                 key={item.label}
                 href={item.href || '#'}
-                className="text-[15px] font-medium text-primary hover:text-accent-tint transition-colors"
+                className="text-[15px] font-medium text-[#F2EEE4] hover:text-[#FF8A6B] transition-colors"
               >
                 {item.label}
               </Link>
@@ -75,14 +76,14 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
           href={ctaUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center gap-2 bg-[#1A1A18] hover:bg-black text-[#F2EEE4] font-semibold text-[15px] px-[22px] py-2.5 rounded-full transition-colors whitespace-nowrap"
+          className="hidden md:inline-flex items-center gap-2 bg-[#F2EEE4] hover:bg-white text-[#1A1A18] font-semibold text-[15px] px-[22px] py-2.5 rounded-full transition-colors whitespace-nowrap"
         >
           {ctaLabel}
         </a>
 
         {/* Mobile burger */}
         <button
-          className="md:hidden p-2 text-muted"
+          className="md:hidden p-2 text-[#F2EEE4]"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menü öffnen"
         >
@@ -98,7 +99,7 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t px-6 py-4 space-y-1" style={{ borderColor: 'var(--line)' }}>
+        <div className="md:hidden border-t px-6 py-4 space-y-1" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
           {nav.flatMap((item) =>
             item.children?.length
               ? item.children.map((c) => (
@@ -110,7 +111,7 @@ export function Header({ settings }: { settings?: SiteSettings | null }) {
             href={ctaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-sm font-semibold px-4 py-3 mt-2 rounded-full text-center bg-[#1A1A18] text-[#F2EEE4]"
+            className="block text-sm font-semibold px-4 py-3 mt-2 rounded-full text-center bg-[#F2EEE4] text-[#1A1A18]"
             onClick={() => setMenuOpen(false)}
           >
             {ctaLabel}
@@ -125,8 +126,7 @@ function DropdownLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href || '#'}
-      className="block px-[15px] py-[11px] rounded-[10px] text-[14.5px] text-muted hover:text-primary transition-colors"
-      style={{ background: 'transparent' }}
+      className="block px-[15px] py-[11px] rounded-[10px] text-[14.5px] text-[#C4BEB2] hover:text-[#F2EEE4] hover:bg-white/[0.05] transition-colors"
     >
       {label}
     </Link>
@@ -135,7 +135,7 @@ function DropdownLink({ href, label }: { href: string; label: string }) {
 
 function MobileLink({ href, label, onClick }: { href: string; label: string; onClick: () => void }) {
   return (
-    <Link href={href || '#'} className="block px-2 py-2 text-muted hover:text-primary transition-colors" onClick={onClick}>
+    <Link href={href || '#'} className="block px-2 py-2 text-[#C4BEB2] hover:text-[#F2EEE4] transition-colors" onClick={onClick}>
       {label}
     </Link>
   )

@@ -41,18 +41,18 @@ export function Footer({ settings }: { settings?: SiteSettings | null }) {
   return (
     <>
       <div className="tape h-[7px]" />
-      <footer style={{ background: 'var(--carbon)' }} className="px-6 sm:px-10 pt-16 pb-9">
+      <footer style={{ background: '#1A1A18' }} className="px-6 sm:px-10 pt-16 pb-9">
         <div className="max-w-container mx-auto grid grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Logo size={24} brand={settings?.brandName || 'boogly'} suffix={settings?.brandSuffix || '.studio'} />
-            <p className="text-muted text-[14.5px] max-w-[34ch] mt-5 leading-[1.55]">{tagline}</p>
+            <Logo size={24} brand={settings?.brandName || 'boogly'} suffix={settings?.brandSuffix || '.studio'} onDark />
+            <p className="text-[14.5px] max-w-[34ch] mt-5 leading-[1.55]" style={{ color: '#C4BEB2' }}>{tagline}</p>
           </div>
 
           {/* Link-Spalten */}
           {columns.map((col) => (
             <div key={col.title}>
-              <h5 className="font-mono text-xs uppercase tracking-[0.12em] text-dim mb-4">{col.title}</h5>
+              <h5 className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: '#9A948A' }}>{col.title}</h5>
               {col.links.map((l) => (
                 <FootLink key={l.label} href={l.href} label={l.label} />
               ))}
@@ -61,7 +61,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null }) {
 
           {/* Social */}
           <div>
-            <h5 className="font-mono text-xs uppercase tracking-[0.12em] text-dim mb-4">Folge uns</h5>
+            <h5 className="font-mono text-xs uppercase tracking-[0.12em] mb-4" style={{ color: '#9A948A' }}>Folge uns</h5>
             {socials.map((s) => (
               <FootLink key={s.label} href={s.url} label={s.label} />
             ))}
@@ -69,14 +69,14 @@ export function Footer({ settings }: { settings?: SiteSettings | null }) {
         </div>
 
         <div
-          className="max-w-container mx-auto mt-11 pt-6 flex flex-wrap justify-between gap-3 font-mono text-xs tracking-[0.06em] text-dim"
-          style={{ borderTop: '1px solid var(--line)' }}
+          className="max-w-container mx-auto mt-11 pt-6 flex flex-wrap justify-between gap-3 font-mono text-xs tracking-[0.06em]"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.08)', color: '#9A948A' }}
         >
           <span>{copyright}</span>
           <span>
-            <Link href="/datenschutz" className="text-dim hover:text-muted transition-colors">DATENSCHUTZ</Link>
+            <Link href="/datenschutz" className="hover:text-[#F2EEE4] transition-colors" style={{ color: '#9A948A' }}>DATENSCHUTZ</Link>
             {' · '}
-            <Link href="/impressum" className="text-dim hover:text-muted transition-colors">IMPRESSUM</Link>
+            <Link href="/impressum" className="hover:text-[#F2EEE4] transition-colors" style={{ color: '#9A948A' }}>IMPRESSUM</Link>
           </span>
         </div>
       </footer>
@@ -86,7 +86,7 @@ export function Footer({ settings }: { settings?: SiteSettings | null }) {
 
 function FootLink({ href, label }: { href: string; label: string }) {
   const external = href.startsWith('http')
-  const cls = 'block text-muted hover:text-primary text-[14.5px] py-1.5 transition-colors'
+  const cls = 'block text-[14.5px] py-1.5 transition-colors text-[#C4BEB2] hover:text-[#F2EEE4]'
   return external ? (
     <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
       {label}
