@@ -8,7 +8,7 @@ echo "────────────────────────�
 echo "  Boogly Studio — Deployment"
 echo "──────────────────────────────────────────────"
 git add -A
-git commit -m "Header, Themen-Slider und Footer dunkel (heller Inhalt dazwischen)" 2>&1 | tail -2
+git commit -m "Fake-Stats entfernt + SEO: boogly.studio als Hauptdomain (Sitemap/Robots/metadataBase)" 2>&1 | tail -2
 git fetch origin main 2>&1 | tail -1
 git merge -X ours --no-edit origin/main >/dev/null 2>&1
 echo "Lade zu GitHub hoch…"

@@ -59,32 +59,17 @@ function DefaultAbout() {
         verbinden — keine perfekte Inszenierung, sondern echte Persönlichkeiten, echte Meinungen, echte Begegnungen.
       </p>
 
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-center">
-        <div>
-          <h2 className="font-display text-primary text-3xl font-bold mb-5">Unsere Mission</h2>
-          <div className="space-y-4 text-secondary leading-relaxed">
-            <p>
-              Social Media ist oft poliert, inszeniert und weit weg vom echten Leben. Wir glauben, dass gerade das
-              Unvollkommene, das Ehrliche, das Authentische Menschen bewegt und verbindet.
-            </p>
-            <p>
-              Unsere Formate sind Räume, in denen echte Menschen über echte Themen sprechen — Liebe, Geld, Gesellschaft,
-              Beziehungen. Unzensiert, unperfekt, ungefiltert.
-            </p>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          {[
-            { label: 'Produzierte Formate', value: '5+' },
-            { label: 'Bewerbungen erhalten', value: '200+' },
-            { label: 'Views generiert', value: '500K+' },
-            { label: 'Community-Mitglieder', value: '10K+' },
-          ].map((stat) => (
-            <div key={stat.label} className="rounded-2xl p-6 text-center" style={{ background: 'var(--carbon)', border: '1px solid var(--line)' }}>
-              <p className="font-display text-3xl font-extrabold mb-1" style={{ color: 'var(--blue)' }}>{stat.value}</p>
-              <p className="text-secondary text-sm">{stat.label}</p>
-            </div>
-          ))}
+      <section className="mb-20 max-w-3xl">
+        <h2 className="font-display text-primary text-3xl font-bold mb-5">Unsere Mission</h2>
+        <div className="space-y-4 text-secondary leading-relaxed">
+          <p>
+            Social Media ist oft poliert, inszeniert und weit weg vom echten Leben. Wir glauben, dass gerade das
+            Unvollkommene, das Ehrliche, das Authentische Menschen bewegt und verbindet.
+          </p>
+          <p>
+            Unsere Formate sind Räume, in denen echte Menschen über echte Themen sprechen — Liebe, Geld, Gesellschaft,
+            Beziehungen. Unzensiert, unperfekt, ungefiltert.
+          </p>
         </div>
       </section>
 

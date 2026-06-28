@@ -12,7 +12,8 @@ const fontText = Hanken_Grotesk({ subsets: ['latin'], variable: '--font-text', d
 const fontMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://boogly.studio'),
+  // Hauptdomain fest auf boogly.studio (Basis für OG-URLs & Sitemap)
+  metadataBase: new URL('https://boogly.studio'),
   title: {
     default: 'Boogly Studio – Echte Menschen. Echte Begegnungen.',
     template: '%s | Boogly Studio',
