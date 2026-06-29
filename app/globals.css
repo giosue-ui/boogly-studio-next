@@ -7,36 +7,36 @@
 
 @layer base {
   :root {
-    color-scheme: light;
+    color-scheme: dark;
 
-    /* ── Helles Theme (Markenpalette) ─────────────────────────────
-       Creme = Hintergrund · Dunkel (#1A1A18) = dominant für Text/Buttons
-       Koralle = sparsamer Akzent. Token-Namen bleiben gleich. */
-    --ink: #f2eee4; /* Creme — Hintergrund */
-    --black: #f2eee4; /* Alias */
-    --carbon: #fcfaf4; /* Karten (warmes Weiß) */
-    --surface: #fcfaf4;
-    --surface2: #ffffff;
-    --line: #e3dccc; /* Rahmen (hell, warm) */
-    --border: #e3dccc;
-    --border-hover: #cfc6b2;
+    /* ── Dunkles Theme (KANTE-Stil) ───────────────────────────────
+       Body dunkel · Creme = Text · Akzente: Koralle + Blau.
+       Header ist separat hell (siehe Header.tsx). Token-Namen bleiben gleich. */
+    --ink: #1a1a18; /* Hintergrund (dunkel) */
+    --black: #1a1a18; /* Alias */
+    --carbon: #232220; /* Karten */
+    --surface: #232220;
+    --surface2: #2c2a27;
+    --line: #34322d; /* Rahmen */
+    --border: #34322d;
+    --border-hover: #45413a;
 
-    --paper: #1a1a18; /* DUNKEL — Überschriften / Logo / Text */
-    --text: #1a1a18;
-    --body: #555049; /* Fließtext (warmes Dunkelgrau) */
-    --mist: #837e73; /* sekundär */
-    --muted: #837e73;
-    --dim: #9a948a; /* Meta */
-    --hint: #9a948a;
+    --paper: #f2eee4; /* Creme — Überschriften / Logo / Text */
+    --text: #f2eee4;
+    --body: #c4beb2; /* Fließtext (warmes Hellgrau) */
+    --mist: #9a948a; /* sekundär */
+    --muted: #9a948a;
+    --dim: #7c776d; /* Meta */
+    --hint: #7c776d;
 
-    --blue: #fb4d26; /* Akzent = Koralle (sparsam) */
+    --blue: #fb4d26; /* Akzent 1 = Koralle */
     --accent: #fb4d26;
     --blue-deep: #c2350f;
     --blue-tint: #ff8a6b;
     --accent-bg: rgba(251, 77, 38, 0.1);
     --accent-border: rgba(251, 77, 38, 0.22);
 
-    --green: #fb4d26; /* zweiter Akzent ebenfalls Koralle (Name bleibt --green) */
+    --green: #2f55f0; /* Akzent 2 = Blau (Name bleibt --green) */
     --green-ink: #f2eee4;
 
     /* Font-Stacks werden von next/font gesetzt (--font-display / --font-text / --font-mono) */
@@ -78,7 +78,7 @@
     background: var(--ink);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(26, 26, 24, 0.2);
+    background: rgba(255, 255, 255, 0.16);
     border-radius: 9999px;
   }
 }
@@ -150,11 +150,11 @@
 
   /* Signatur-Effekte aus Website A */
   .dot-grid {
-    background-image: radial-gradient(circle at center, rgba(26, 26, 24, 0.07) 1.4px, transparent 2px);
+    background-image: radial-gradient(circle at center, rgba(242, 238, 228, 0.05) 1.4px, transparent 2px);
     background-size: 30px 30px;
   }
   .hero-radial {
-    background: radial-gradient(900px 520px at 50% -5%, #fbe7df 0%, var(--ink) 60%);
+    background: radial-gradient(900px 520px at 50% -5%, #24201d 0%, var(--ink) 60%);
   }
   .cta-rings {
     background: repeating-radial-gradient(

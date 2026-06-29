@@ -22,11 +22,12 @@ interface ButtonProps {
 }
 
 const variantClasses: Record<Variant, string> = {
-  // Primär = dunkel (dominant)
-  primary: 'bg-[#1A1A18] hover:bg-black text-[#F2EEE4] font-semibold hover:-translate-y-px',
-  // green = Koralle-Akzent (sparsam, z. B. Schluss-CTA)
+  // Primär = creme Pill (dominant, auf dunklem Body)
+  primary: 'bg-[#F2EEE4] hover:bg-white text-[#1A1A18] font-semibold hover:-translate-y-px',
+  // green = Blau-Akzent (sparsam, z. B. Schluss-CTA)
   green: 'bg-green text-green-ink font-bold hover:brightness-105 hover:-translate-y-px',
-  ghost: 'border border-border text-primary hover:border-muted hover:bg-black/[0.04] font-semibold',
+  // ghost = creme Outline (auf dunklem Body)
+  ghost: 'border border-border text-primary hover:border-muted hover:bg-white/[0.05] font-semibold',
   secondary: 'bg-surface-2 hover:bg-border text-primary border border-border font-medium',
 }
 

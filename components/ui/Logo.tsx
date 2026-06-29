@@ -14,19 +14,22 @@ export function Logo({
   brand = 'boogly',
   suffix = '.studio',
   onDark = false,
+  onLight = false,
 }: {
   href?: string
   size?: number
   brand?: string
   suffix?: string
   onDark?: boolean
+  onLight?: boolean
 }) {
   const ref = useRef<HTMLAnchorElement>(null)
   usePupilFollow(ref)
 
-  const letterColor = onDark ? '#F2EEE4' : 'var(--paper)'
-  const eyeBg = onDark ? '#F2EEE4' : 'var(--paper)'
-  const pupilBg = onDark ? '#1A1A18' : 'var(--ink)'
+  // onLight = dunkle Schrift auf hellem Header; onDark/Default = creme Schrift auf dunkler Fläche
+  const letterColor = onLight ? '#1A1A18' : onDark ? '#F2EEE4' : 'var(--paper)'
+  const eyeBg = onLight ? '#1A1A18' : onDark ? '#F2EEE4' : 'var(--paper)'
+  const pupilBg = onLight ? '#F2EEE4' : onDark ? '#1A1A18' : 'var(--ink)'
 
   const ooIndex = brand.toLowerCase().indexOf('oo')
   const pre = ooIndex >= 0 ? brand.slice(0, ooIndex) : brand

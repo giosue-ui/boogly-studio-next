@@ -20,8 +20,16 @@ export function Ticker({ topics }: { topics?: string[] }) {
       <div className="flex w-max items-center animate-marquee hover:[animation-play-state:paused]">
         {doubled.map((topic, i) => (
           <span key={i} className="flex items-center">
-            <span className="font-medium text-base whitespace-nowrap px-[30px]" style={{ color: '#C4BEB2' }}>{topic}</span>
-            <span className="w-[7px] h-[7px] rounded-full flex-none" style={{ background: '#FB4D26' }} />
+            <span
+              className="font-mono font-medium text-sm uppercase tracking-[0.14em] whitespace-nowrap px-[30px]"
+              style={{ color: '#9A948A' }}
+            >
+              {topic}
+            </span>
+            <span
+              className="w-[7px] h-[7px] rounded-full flex-none"
+              style={{ background: i % 2 === 0 ? '#2F55F0' : '#FB4D26' }}
+            />
           </span>
         ))}
       </div>

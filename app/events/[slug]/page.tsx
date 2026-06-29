@@ -199,7 +199,7 @@ export default async function EventDetailPage({
               <div className="mt-6 pt-6 border-t border-border">
                 <a
                   href="#bewerbung"
-                  className="block w-full bg-[#1A1A18] hover:bg-black text-[#F2EEE4] text-sm font-semibold py-3 rounded-xl text-center transition-colors"
+                  className="block w-full bg-[#F2EEE4] hover:bg-white text-[#1A1A18] text-sm font-semibold py-3 rounded-xl text-center transition-colors"
                 >
                   Jetzt bewerben ↓
                 </a>

@@ -15,26 +15,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Flächen (helles Theme)
-        background: '#F2EEE4', // creme
-        surface: '#FCFAF4', // warmes Weiß (Karten)
-        'surface-2': '#FFFFFF',
-        border: '#E3DCCC',
-        'border-hover': '#CFC6B2',
-        // Text (dunkel dominant)
-        primary: '#1A1A18',
-        secondary: '#555049',
-        muted: '#837E73',
-        dim: '#9A948A',
-        // Akzent = Koralle (sparsam)
+        // Flächen (dunkles Theme)
+        background: '#1A1A18',
+        surface: '#232220',
+        'surface-2': '#2C2A27',
+        border: '#34322D',
+        'border-hover': '#45413A',
+        // Text (creme auf dunkel)
+        primary: '#F2EEE4',
+        secondary: '#C4BEB2',
+        muted: '#9A948A',
+        dim: '#7C776D',
+        // Akzent 1 = Koralle
         accent: '#FB4D26',
         'accent-hover': '#E63E18',
         'accent-deep': '#C2350F',
         'accent-tint': '#FF8A6B',
         'accent-subtle': 'rgba(251,77,38,0.10)',
         'accent-border': 'rgba(251,77,38,0.22)',
-        // 'green' = ebenfalls Koralle (Name bleibt, für CTA / Tape)
-        green: '#FB4D26',
+        // Akzent 2 = Blau (Name 'green' bleibt; für CTA / Slide)
+        green: '#2F55F0',
         'green-ink': '#F2EEE4',
       },
       fontFamily: {

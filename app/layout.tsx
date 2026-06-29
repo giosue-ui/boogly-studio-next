@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
-import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono } from 'next/font/google'
+import { Archivo, Space_Mono } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { getSiteSettings } from '@/lib/sanity/queries'
 
-// Fonts werden zur Build-Zeit heruntergeladen und SELBST gehostet (von der eigenen
-// Domain ausgeliefert). Dadurch wird keine Besucher-IP an Google übertragen (DSGVO).
-const fontDisplay = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', display: 'swap' })
-const fontText = Hanken_Grotesk({ subsets: ['latin'], variable: '--font-text', display: 'swap' })
-const fontMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' })
+// Fonts werden zur Build-Zeit heruntergeladen und SELBST gehostet (DSGVO, kein Google-Request).
+// Archivo (Black) für Headlines & Text, Space Mono für Labels/Eyebrows.
+const fontDisplay = Archivo({ subsets: ['latin'], variable: '--font-display', display: 'swap' })
+const fontText = Archivo({ subsets: ['latin'], variable: '--font-text', display: 'swap' })
+const fontMono = Space_Mono({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-mono', display: 'swap' })
 
 export const metadata: Metadata = {
   // Kanonische Domain fest auf www.boogly.studio (Basis für OG-URLs & Sitemap)

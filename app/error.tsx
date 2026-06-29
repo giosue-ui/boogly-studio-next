@@ -24,7 +24,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
       <div className="flex flex-wrap gap-4 justify-center">
         <button
           onClick={reset}
-          className="inline-flex items-center px-[30px] py-[15px] rounded-full font-semibold bg-[#1A1A18] hover:bg-black text-[#F2EEE4] transition-colors"
+          className="inline-flex items-center px-[30px] py-[15px] rounded-full font-semibold bg-[#F2EEE4] hover:bg-white text-[#1A1A18] transition-colors"
         >
           Erneut versuchen
         </button>
