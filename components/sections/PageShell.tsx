@@ -17,10 +17,10 @@ export function PageShell({
     <>
       <section className="hero-radial px-6 sm:px-10 pt-24 pb-12 text-center">
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="font-display font-extrabold text-primary text-[clamp(34px,5vw,56px)] leading-tight mt-4 mb-5">
+        <h1 className="font-display font-extrabold text-[#F2EEE4] text-[clamp(34px,5vw,56px)] leading-tight mt-4 mb-5">
           {title}
         </h1>
-        {intro && <p className="text-secondary text-xl max-w-2xl mx-auto">{intro}</p>}
+        {intro && <p className="text-[#C4BEB2] text-xl max-w-2xl mx-auto">{intro}</p>}
       </section>
       {children && <section className="container pb-24 max-w-3xl">{children}</section>}
     </>

@@ -36,7 +36,7 @@ export function Hero({ eyebrow, headline, text, primaryCta, secondaryCta }: Hero
         </span>
       </div>
 
-      <h1 className="relative font-display font-extrabold text-primary text-[clamp(40px,6.4vw,76px)] leading-none max-w-[15ch]">
+      <h1 className="relative font-display font-extrabold text-[#F2EEE4] text-[clamp(40px,6.4vw,76px)] leading-none max-w-[15ch]">
         {lines.map((line, i) => (
           <span key={i}>
             {line}
@@ -45,13 +45,13 @@ export function Hero({ eyebrow, headline, text, primaryCta, secondaryCta }: Hero
         ))}
       </h1>
 
-      <p className="relative text-secondary text-[clamp(17px,2.1vw,21px)] max-w-[56ch] mt-[26px]">
+      <p className="relative text-[#C4BEB2] text-[clamp(17px,2.1vw,21px)] max-w-[56ch] mt-[26px]">
         {text || D.text}
       </p>
 
       <div className="relative flex flex-wrap gap-3.5 justify-center mt-10">
-        <Button href={primary.href} variant="primary" size="lg">{primary.label}</Button>
-        <Button href={secondary.href} variant="ghost" size="lg">{secondary.label}</Button>
+        <Button href={primary.href} variant="cream" size="lg">{primary.label}</Button>
+        <Button href={secondary.href} variant="creamOutline" size="lg">{secondary.label}</Button>
       </div>
     </section>
   )

@@ -7,27 +7,28 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
 
-    /* ── Dunkles Theme (KANTE-Stil) ───────────────────────────────
-       Body dunkel · Creme = Text · Akzente: Koralle + Blau.
-       Header ist separat hell (siehe Header.tsx). Token-Namen bleiben gleich. */
-    --ink: #1a1a18; /* Hintergrund (dunkel) */
-    --black: #1a1a18; /* Alias */
-    --carbon: #232220; /* Karten */
-    --surface: #232220;
-    --surface2: #2c2a27;
-    --line: #34322d; /* Rahmen */
-    --border: #34322d;
-    --border-hover: #45413a;
+    /* ── Helles Theme (Variante 1) ────────────────────────────────
+       Body hell (Creme) · dunkler Text · Akzente: Koralle + Blau.
+       Dunkle Inseln (Hero, Slide, „Mach mit"-CTA, tape) setzen ihre Farben
+       explizit. --ink/--paper bleiben literal (für hero-radial & Logo-Augen). */
+    --ink: #1a1a18; /* dunkles „Ink" — dunkle Inseln / hero-radial */
+    --black: #1a1a18;
+    --carbon: #ffffff; /* Karten (hell) */
+    --surface: #ffffff;
+    --surface2: #fbf8f0;
+    --line: #e3dccc; /* Rahmen (hell) */
+    --border: #e3dccc;
+    --border-hover: #d4cbb6;
 
-    --paper: #f2eee4; /* Creme — Überschriften / Logo / Text */
-    --text: #f2eee4;
-    --body: #c4beb2; /* Fließtext (warmes Hellgrau) */
-    --mist: #9a948a; /* sekundär */
-    --muted: #9a948a;
-    --dim: #7c776d; /* Meta */
-    --hint: #7c776d;
+    --paper: #f2eee4; /* Creme — heller Body / Logo-Augen */
+    --text: #1a1a18; /* dunkler Text */
+    --body: #5a554c; /* Fließtext */
+    --mist: #8a857a; /* sekundär */
+    --muted: #8a857a;
+    --dim: #a39d90; /* Meta */
+    --hint: #a39d90;
 
     --blue: #fb4d26; /* Akzent 1 = Koralle */
     --accent: #fb4d26;
@@ -75,10 +76,10 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--ink);
+    background: var(--paper);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.16);
+    background: rgba(26, 26, 24, 0.18);
     border-radius: 9999px;
   }
 }

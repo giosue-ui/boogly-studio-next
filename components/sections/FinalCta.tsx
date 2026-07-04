@@ -23,12 +23,12 @@ export function FinalCta({
   const btn = button?.label ? button : D.button
 
   return (
-    <div className="relative overflow-hidden" style={{ background: 'var(--carbon)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
+    <div className="relative overflow-hidden" style={{ background: 'radial-gradient(700px 400px at 50% 120%, #24201d 0%, #1a1a18 60%)', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="cta-rings absolute inset-0 opacity-50 pointer-events-none" />
       <section className="relative text-center px-6 sm:px-10 py-[108px] max-w-[760px] mx-auto z-[2]">
         <Eyebrow color="green">{eyebrow || D.eyebrow}</Eyebrow>
-        <h2 className="font-display font-extrabold text-[clamp(32px,4.6vw,52px)] leading-[1.05] text-primary mt-3.5">{headline || D.headline}</h2>
-        <p className="text-secondary text-lg max-w-[54ch] mx-auto mt-[22px] mb-9">{text || D.text}</p>
+        <h2 className="font-display font-extrabold text-[clamp(32px,4.6vw,52px)] leading-[1.05] text-[#F2EEE4] mt-3.5">{headline || D.headline}</h2>
+        <p className="text-[#C4BEB2] text-lg max-w-[54ch] mx-auto mt-[22px] mb-9">{text || D.text}</p>
         <Button href={btn.href} variant="green" size="lg">{btn.label}</Button>
       </section>
     </div>

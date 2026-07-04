@@ -8,7 +8,7 @@ echo "────────────────────────�
 echo "  Boogly Studio — Deployment"
 echo "──────────────────────────────────────────────"
 git add -A
-git commit -m "KANTE-Restyle: heller Header, dunkler Body, Archivo+Space Mono, Slide mit Blau/Koralle-Punkten" 2>&1 | tail -2
+git commit -m "Startseite Variante 1: helles Theme, dunkle Inseln (Hero/Slide/CTA), Ueber-uns raus, CTA unter FAQ, Footer hell" 2>&1 | tail -2
 git fetch origin main 2>&1 | tail -1
 git merge -X ours --no-edit origin/main >/dev/null 2>&1
 echo "Lade zu GitHub hoch…"

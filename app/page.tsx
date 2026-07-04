@@ -4,7 +4,6 @@ import { getFeaturedEvents, getHomePage } from '@/lib/sanity/queries'
 import { EventCard } from '@/components/events/EventCard'
 import { Hero } from '@/components/sections/Hero'
 import { Ticker } from '@/components/sections/Ticker'
-import { AboutCard } from '@/components/sections/AboutCard'
 import { Steps } from '@/components/sections/Steps'
 import { FinalCta } from '@/components/sections/FinalCta'
 import { FaqSection } from '@/components/sections/FaqSection'
@@ -28,13 +27,6 @@ export default async function HomePage() {
       />
 
       <Ticker topics={home?.tickerTopics} />
-
-      <AboutCard
-        eyebrow={home?.aboutEyebrow}
-        headline={home?.aboutHeadline}
-        paragraphs={home?.aboutParagraphs}
-        stats={home?.aboutStats}
-      />
 
       <Steps
         id="castings"
@@ -69,17 +61,17 @@ export default async function HomePage() {
         )}
       </section>
 
+      <FaqSection
+        eyebrow={home?.faqEyebrow}
+        headline={home?.faqHeadline}
+        items={home?.faqItems?.map((f) => ({ _id: f._id, question: f.question, answer: f.answer }))}
+      />
+
       <FinalCta
         eyebrow={home?.ctaEyebrow}
         headline={home?.ctaHeadline}
         text={home?.ctaText}
         button={home?.ctaButton}
-      />
-
-      <FaqSection
-        eyebrow={home?.faqEyebrow}
-        headline={home?.faqHeadline}
-        items={home?.faqItems?.map((f) => ({ _id: f._id, question: f.question, answer: f.answer }))}
       />
     </>
   )

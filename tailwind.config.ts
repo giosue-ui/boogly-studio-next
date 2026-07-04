@@ -15,17 +15,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Flächen (dunkles Theme)
-        background: '#1A1A18',
-        surface: '#232220',
-        'surface-2': '#2C2A27',
-        border: '#34322D',
-        'border-hover': '#45413A',
-        // Text (creme auf dunkel)
-        primary: '#F2EEE4',
-        secondary: '#C4BEB2',
-        muted: '#9A948A',
-        dim: '#7C776D',
+        // Flächen (helles Theme — Variante 1)
+        background: '#F2EEE4',
+        surface: '#FFFFFF',
+        'surface-2': '#FBF8F0',
+        border: '#E3DCCC',
+        'border-hover': '#D4CBB6',
+        // Text (dunkel auf hell)
+        primary: '#1A1A18',
+        secondary: '#5A554C',
+        muted: '#8A857A',
+        dim: '#A39D90',
         // Akzent 1 = Koralle
         accent: '#FB4D26',
         'accent-hover': '#E63E18',
