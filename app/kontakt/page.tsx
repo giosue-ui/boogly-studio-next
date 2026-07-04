@@ -8,7 +8,8 @@ export const metadata: Metadata = {
 
 export default function KontaktPage() {
   return (
-    <div className="container py-16">
+    <div className="dark-page">
+      <div className="container py-16">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="mb-16">
@@ -79,6 +80,7 @@ export default function KontaktPage() {
             </div>
           </aside>
         </div>
+      </div>
       </div>
     </div>
   )

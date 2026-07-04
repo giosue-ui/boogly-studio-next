@@ -8,7 +8,7 @@ echo "────────────────────────�
 echo "  Boogly Studio — Deployment"
 echo "──────────────────────────────────────────────"
 git add -A
-git commit -m "Startseite Variante 1: helles Theme, dunkle Inseln (Hero/Slide/CTA), Ueber-uns raus, CTA unter FAQ, Footer hell" 2>&1 | tail -2
+git commit -m "Blau raus (Punkte/Slide/CTA -> Koralle+creme), Hero-Punkte entfernt, alle Unterseiten dunkel (.dark-page)" 2>&1 | tail -2
 git fetch origin main 2>&1 | tail -1
 git merge -X ours --no-edit origin/main >/dev/null 2>&1
 echo "Lade zu GitHub hoch…"

@@ -175,3 +175,60 @@
     background-clip: text;
   }
 }
+
+/* ── Dunkle Unterseiten ────────────────────────────────────────────
+   .dark-page schaltet einen Bereich auf das dunkle Theme um: Tokens
+   werden lokal überschrieben, und die genutzten Tailwind-Farbklassen
+   bekommen per höherer Spezifität dunkle Werte. Homepage bleibt hell. */
+.dark-page {
+  background: #1a1a18;
+  color: #f2eee4;
+  --carbon: #232220;
+  --surface: #232220;
+  --surface2: #2c2a27;
+  --line: #34322d;
+  --border: #34322d;
+  --border-hover: #45413a;
+  --text: #f2eee4;
+  --body: #c4beb2;
+  --mist: #9a948a;
+  --muted: #9a948a;
+  --dim: #7c776d;
+}
+.dark-page .text-primary { color: #f2eee4; }
+.dark-page .text-secondary { color: #c4beb2; }
+.dark-page .text-muted { color: #9a948a; }
+.dark-page .text-dim { color: #7c776d; }
+.dark-page .bg-background { background-color: #1a1a18; }
+.dark-page .bg-surface { background-color: #232220; }
+.dark-page .bg-surface-2 { background-color: #2c2a27; }
+.dark-page .border-border { border-color: #34322d; }
+.dark-page .border-border-hover { border-color: #45413a; }
+.dark-page .placeholder-muted::placeholder { color: #9a948a; }
+.dark-page .prose-boogly { color: #c4beb2; }
+
+/* Theme-fähige Buttons: hell = dunkles Pill / dunkles Outline;
+   auf .dark-page automatisch creme Pill / creme Outline. */
+.btn-solid {
+  background: var(--btn-solid-bg, #1a1a18);
+  color: var(--btn-solid-fg, #f2eee4);
+}
+.btn-solid:hover {
+  filter: brightness(0.94);
+}
+.btn-outline {
+  border: 1px solid var(--btn-outline-bd, #e3dccc);
+  color: var(--btn-outline-fg, #1a1a18);
+}
+.btn-outline:hover {
+  border-color: var(--btn-outline-bd-hover, #8a857a);
+  background: var(--btn-outline-hover-bg, rgba(0, 0, 0, 0.04));
+}
+.dark-page {
+  --btn-solid-bg: #f2eee4;
+  --btn-solid-fg: #1a1a18;
+  --btn-outline-bd: #45413a;
+  --btn-outline-fg: #f2eee4;
+  --btn-outline-bd-hover: #9a948a;
+  --btn-outline-hover-bg: rgba(255, 255, 255, 0.05);
+}

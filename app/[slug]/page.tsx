@@ -23,13 +23,15 @@ export default async function GenericPage({ params }: { params: { slug: string }
   if (!page) notFound()
 
   return (
-    <article className="container py-20 max-w-3xl">
-      <h1 className="font-display text-primary text-4xl sm:text-5xl font-extrabold leading-tight mb-10">{page.title}</h1>
-      {page.body && (
-        <div className="prose-boogly text-lg">
-          <PortableText value={page.body} />
-        </div>
-      )}
-    </article>
+    <div className="dark-page">
+      <article className="container py-20 max-w-3xl">
+        <h1 className="font-display text-primary text-4xl sm:text-5xl font-extrabold leading-tight mb-10">{page.title}</h1>
+        {page.body && (
+          <div className="prose-boogly text-lg">
+            <PortableText value={page.body} />
+          </div>
+        )}
+      </article>
+    </div>
   )
 }

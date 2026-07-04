@@ -57,7 +57,8 @@ export default async function EventDetailPage({
   const deadlinePassed = deadline ? deadline < new Date() : false
 
   return (
-    <div className="container py-12">
+    <div className="dark-page">
+      <div className="container py-12">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-muted mb-8">
         <Link href="/" className="hover:text-secondary transition-colors">Home</Link>
@@ -199,7 +200,7 @@ export default async function EventDetailPage({
               <div className="mt-6 pt-6 border-t border-border">
                 <a
                   href="#bewerbung"
-                  className="block w-full bg-[#1A1A18] hover:bg-black text-[#F2EEE4] text-sm font-semibold py-3 rounded-xl text-center transition-colors"
+                  className="btn-solid block w-full text-sm font-semibold py-3 rounded-xl text-center transition-colors"
                 >
                   Jetzt bewerben ↓
                 </a>
@@ -207,6 +208,7 @@ export default async function EventDetailPage({
             )}
           </div>
         </aside>
+      </div>
       </div>
     </div>
   )

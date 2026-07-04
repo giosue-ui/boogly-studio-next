@@ -13,7 +13,8 @@ export default async function EventsPage() {
   const completed = events.filter((e) => e.status === 'completed')
 
   return (
-    <div className="container py-16">
+    <div className="dark-page">
+      <div className="container py-16">
       {/* Header */}
       <div className="mb-12">
         <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">
@@ -67,6 +68,7 @@ export default async function EventsPage() {
           <p className="text-secondary">Schau bald wieder rein – wir planen gerade Neues.</p>
         </div>
       )}
+      </div>
     </div>
   )
 }

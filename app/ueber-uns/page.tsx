@@ -15,7 +15,8 @@ export default async function UeberUnsPage() {
   const about = await getAboutPage()
 
   return (
-    <div className="container py-16">
+    <div className="dark-page">
+      <div className="container py-16">
       {/* Header */}
       <div className="max-w-3xl mb-16">
         <Eyebrow>{about?.eyebrow || 'Über uns'}</Eyebrow>
@@ -46,6 +47,7 @@ export default async function UeberUnsPage() {
         </p>
         <Button href="/events" size="lg">Aktuelle Castings ansehen →</Button>
       </section>
+      </div>
     </div>
   )
 }

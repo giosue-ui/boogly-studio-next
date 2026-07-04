@@ -26,11 +26,7 @@ export function Hero({ eyebrow, headline, text, primaryCta, secondaryCta }: Hero
     <section className="hero-radial relative min-h-[90vh] flex flex-col items-center justify-center text-center px-6 pt-[90px] pb-[100px] overflow-hidden">
       <div className="dot-grid absolute inset-0 opacity-70 pointer-events-none" />
 
-      <div className="relative mb-[22px] flex items-center gap-2.5">
-        <span className="flex items-center gap-1">
-          <span className="w-[7px] h-[7px] rounded-full" style={{ background: '#2F55F0' }} />
-          <span className="w-[7px] h-[7px] rounded-full" style={{ background: '#FB4D26' }} />
-        </span>
+      <div className="relative mb-[22px]">
         <span className="font-mono text-[13px] uppercase tracking-[0.14em]" style={{ color: '#9A948A' }}>
           {eyebrow || D.eyebrow}
         </span>

@@ -28,7 +28,7 @@ export function Ticker({ topics }: { topics?: string[] }) {
             </span>
             <span
               className="w-[7px] h-[7px] rounded-full flex-none"
-              style={{ background: i % 2 === 0 ? '#2F55F0' : '#FB4D26' }}
+              style={{ background: '#FB4D26' }}
             />
           </span>
         ))}

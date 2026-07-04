@@ -22,12 +22,12 @@ interface ButtonProps {
 }
 
 const variantClasses: Record<Variant, string> = {
-  // Primär = dunkles Pill (dominant, auf hellem Body)
-  primary: 'bg-[#1A1A18] hover:bg-black text-[#F2EEE4] font-semibold hover:-translate-y-px',
+  // Primär = solides Pill; hell = dunkel, auf .dark-page automatisch creme
+  primary: 'btn-solid font-semibold hover:-translate-y-px',
   // green = Blau-Akzent (sparsam, z. B. Schluss-CTA)
   green: 'bg-green text-green-ink font-bold hover:brightness-105 hover:-translate-y-px',
-  // ghost = dunkles Outline (auf hellem Body)
-  ghost: 'border border-border text-primary hover:border-muted hover:bg-black/[0.04] font-semibold',
+  // ghost = Outline; hell = dunkel, auf .dark-page automatisch creme
+  ghost: 'btn-outline font-semibold',
   secondary: 'bg-surface-2 hover:bg-border text-primary border border-border font-medium',
   // cream / creamOutline = für dunkle Inseln (z. B. Hero)
   cream: 'bg-[#F2EEE4] hover:bg-white text-[#1A1A18] font-semibold hover:-translate-y-px',

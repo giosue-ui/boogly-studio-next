@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 export default function ImpressumPage() {
   return (
+    <div className="dark-page">
     <div className="container py-24 max-w-2xl">
       <Link
         href="/"
@@ -70,6 +71,7 @@ export default function ImpressumPage() {
         </section>
 
       </div>
+    </div>
     </div>
   )
 }

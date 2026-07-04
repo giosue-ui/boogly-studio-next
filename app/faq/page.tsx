@@ -13,7 +13,7 @@ export default async function FAQPage() {
   const items = await getFaqItems()
 
   return (
-    <>
+    <div className="dark-page">
       <section className="hero-radial px-6 sm:px-10 pt-24 pb-12 text-center">
         <Eyebrow>FAQ</Eyebrow>
         <h1 className="font-display font-extrabold text-primary text-[clamp(34px,5vw,56px)] leading-tight mt-4 mb-5">
@@ -31,11 +31,11 @@ export default async function FAQPage() {
         <div className="rounded-3xl p-10 text-center" style={{ background: 'var(--carbon)', border: '1px solid var(--line)' }}>
           <h2 className="font-display text-primary text-2xl font-bold mb-3">Noch eine Frage?</h2>
           <p className="text-secondary mb-6">Schreib uns direkt – wir antworten innerhalb von 24 Stunden.</p>
-          <Link href="/kontakt" className="inline-block text-sm font-semibold px-6 py-3 rounded-full transition-colors bg-[#1A1A18] hover:bg-black text-[#F2EEE4]">
+          <Link href="/kontakt" className="btn-solid inline-block text-sm font-semibold px-6 py-3 rounded-full transition-colors">
             Kontakt aufnehmen →
           </Link>
         </div>
       </div>
-    </>
+    </div>
   )
 }
