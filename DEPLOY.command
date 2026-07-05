@@ -8,7 +8,7 @@ echo "────────────────────────�
 echo "  Boogly Studio — Deployment"
 echo "──────────────────────────────────────────────"
 git add -A
-git commit -m "Blau raus (Punkte/Slide/CTA -> Koralle+creme), Hero-Punkte entfernt, alle Unterseiten dunkel (.dark-page)" 2>&1 | tail -2
+git commit -m "Brevo-Mails im Boogly-Design (hell): Bewerbungs-Bestaetigung inline + interne Benachrichtigungen" 2>&1 | tail -2
 git fetch origin main 2>&1 | tail -1
 git merge -X ours --no-edit origin/main >/dev/null 2>&1
 echo "Lade zu GitHub hoch…"
