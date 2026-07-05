@@ -268,3 +268,27 @@ ${footerBlock()}`
     htmlContent: emailLayout(cardRows, `Neue Kontaktanfrage von ${params.name}`),
   })
 }
+
+/* ────────────────────────────────────────────────────────────────
+   4) System-Alarm bei Serverfehlern (leichtgewichtiges Monitoring)
+   ──────────────────────────────────────────────────────────────── */
+export async function sendInternalAlert(subject: string, lines: string[]): Promise<void> {
+  const to = process.env.BREVO_NOTIFICATION_EMAIL || 'hallo@boogly.studio'
+  const body = lines
+    .map((l) => `<p style="font-family:${C.ff};font-size:14px;line-height:1.5;color:#8a2c10;margin:0 0 8px;">${esc(l)}</p>`)
+    .join('')
+
+  const cardRows = `
+${heroBlock('System-Alarm', esc(subject))}
+<tr><td style="padding:24px 40px 34px;">
+<div style="background:#fdece6;border:1px solid #f5b79f;border-radius:14px;padding:18px 22px;">${body}</div>
+</td></tr>
+${footerBlock()}`
+
+  await sendBrevoEmail({
+    sender: { name: 'Boogly Studio System', email: 'noreply@boogly.studio' },
+    to: [{ name: 'Boogly Studio', email: to }],
+    subject: `⚠️ ${subject}`,
+    htmlContent: emailLayout(cardRows, subject),
+  })
+}

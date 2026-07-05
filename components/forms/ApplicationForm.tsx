@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -43,6 +43,7 @@ interface Props {
 export function ApplicationForm({ eventTitle, format, themes = DEFAULT_THEMES }: Props) {
   const [submitted, setSubmitted] = useState(false)
   const [serverError, setServerError] = useState('')
+  const mountedAt = useRef(Date.now())
 
   const {
     register,
@@ -77,6 +78,7 @@ export function ApplicationForm({ eventTitle, format, themes = DEFAULT_THEMES }:
           themen: data.themen.join(', '),
           format,
           eventTitle,
+          elapsed: Date.now() - mountedAt.current,
         }),
       })
       const json = await res.json()

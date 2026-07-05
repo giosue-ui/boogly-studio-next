@@ -8,7 +8,7 @@ echo "────────────────────────�
 echo "  Boogly Studio — Deployment"
 echo "──────────────────────────────────────────────"
 git add -A
-git commit -m "Security-Haertung: CSP (Site/Studio getrennt), Consent serverseitig, Body-Limit, Airtable-Fallback, Rate-Limit-Cleanup, CORS www, toten Sanity-Token entfernt" 2>&1 | tail -2
+git commit -m "OG-Bild, Timing-Spamschutz, interner Fehler-Alarm (Monitoring-lite), branded Event-Platzhalter" 2>&1 | tail -2
 git fetch origin main 2>&1 | tail -1
 git merge -X ours --no-edit origin/main >/dev/null 2>&1
 echo "Lade zu GitHub hoch…"

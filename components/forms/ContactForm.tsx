@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -19,6 +19,7 @@ type FormData = z.infer<typeof schema>
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
   const [serverError, setServerError] = useState('')
+  const mountedAt = useRef(Date.now())
 
   const {
     register,
@@ -32,7 +33,7 @@ export function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, elapsed: Date.now() - mountedAt.current }),
       })
       const json = await res.json()
       if (json.ok) {

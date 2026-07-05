@@ -38,8 +38,14 @@ export function EventCard({ event }: { event: EventSummary }) {
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-4xl opacity-20">🎬</span>
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center gap-2"
+            style={{ background: 'linear-gradient(135deg,#242320,#1a1a18)' }}
+          >
+            <span className="font-display font-extrabold text-xl tracking-tight text-[#f2eee4]">
+              boogly<span className="text-accent">.studio</span>
+            </span>
+            <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-[#9a948a]">Casting</span>
           </div>
         )}
         {/* Status badge */}

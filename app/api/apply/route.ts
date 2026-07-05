@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { saveApplication } from '@/lib/airtable'
-import { sendApplicationConfirmation, sendApplicationNotification } from '@/lib/brevo'
+import { sendApplicationConfirmation, sendApplicationNotification, sendInternalAlert } from '@/lib/brevo'
 
 // ─── Validierungsschema ────────────────────────────────────────────────────────
 const ApplySchema = z.object({
@@ -21,6 +21,9 @@ const ApplySchema = z.object({
 
   // DSGVO-Einwilligung (serverseitig erzwungen)
   consent: z.boolean().refine((v) => v === true, 'Bitte stimme der Datenschutzerklärung zu.'),
+
+  // Zeit seit Formular-Anzeige (ms) — Bots senden praktisch sofort
+  elapsed: z.number().optional(),
 
   // Honeypot (Spam-Schutz)
   website: z.string().max(0, 'Bot erkannt').optional(),
@@ -90,9 +93,11 @@ export async function POST(request: NextRequest) {
 
     const data = result.data
 
-    // Honeypot check
+    // Honeypot + Timing-Check (stille Antwort an Bots)
     if (data.website) {
-      // Stille Antwort an Bots
+      return NextResponse.json({ ok: true })
+    }
+    if (typeof data.elapsed === 'number' && data.elapsed < 2500) {
       return NextResponse.json({ ok: true })
     }
 
@@ -140,6 +145,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true })
   } catch (error) {
     console.error('[apply] Unerwarteter Fehler:', error)
+    await sendInternalAlert('Bewerbung: Serverfehler in /api/apply', [
+      'Bei einer Bewerbung ist ein unerwarteter Serverfehler aufgetreten.',
+      String(error),
+    ]).catch(() => {})
     return NextResponse.json(
       { error: 'Serverfehler. Bitte versuche es erneut.' },
       { status: 500 }

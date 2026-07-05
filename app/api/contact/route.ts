@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-import { sendContactNotification } from '@/lib/brevo'
+import { sendContactNotification, sendInternalAlert } from '@/lib/brevo'
 
 const ContactSchema = z.object({
   name: z.string().min(2).max(100),
@@ -9,6 +9,7 @@ const ContactSchema = z.object({
   message: z.string().min(10).max(5000),
   // DSGVO-Einwilligung (serverseitig erzwungen)
   consent: z.boolean().refine((v) => v === true, 'Bitte stimme der Datenschutzerklärung zu.'),
+  elapsed: z.number().optional(), // Timing-Check gegen Bots
   website: z.string().max(0).optional(), // Honeypot
 })
 
@@ -67,6 +68,9 @@ export async function POST(request: NextRequest) {
     if (data.website) {
       return NextResponse.json({ ok: true })
     }
+    if (typeof data.elapsed === 'number' && data.elapsed < 2500) {
+      return NextResponse.json({ ok: true })
+    }
 
     await sendContactNotification({
       name: data.name,
@@ -77,6 +81,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true })
   } catch (error) {
     console.error('[contact] Fehler:', error)
+    await sendInternalAlert('Kontakt: Serverfehler in /api/contact', [
+      'Bei einer Kontaktanfrage ist ein unerwarteter Serverfehler aufgetreten.',
+      String(error),
+    ]).catch(() => {})
     return NextResponse.json({ error: 'Serverfehler.' }, { status: 500 })
   }
 }
