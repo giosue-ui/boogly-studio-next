@@ -11,14 +11,3 @@ export const client = createClient({
   apiVersion: '2024-06-01',
   useCdn: true,
 })
-
-/**
- * Client ohne CDN — für Live-Preview oder wenn immer frische Daten nötig sind.
- */
-export const previewClient = createClient({
-  projectId,
-  dataset,
-  apiVersion: '2024-06-01',
-  useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
-})

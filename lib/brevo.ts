@@ -185,6 +185,11 @@ export async function sendApplicationNotification(params: {
   applicantEmail: string
   eventTitle: string
   format: string
+  instagram?: string
+  bio?: string
+  motivation?: string
+  themen?: string
+  airtableOk?: boolean
 }): Promise<void> {
   const notificationEmail = process.env.BREVO_NOTIFICATION_EMAIL || 'hallo@boogly.studio'
   const name = esc(params.applicantName)
@@ -192,13 +197,32 @@ export async function sendApplicationNotification(params: {
   const eventTitle = esc(params.eventTitle)
   const format = esc(params.format)
 
+  const row = (label: string, value: string, last = false) => {
+    const border = last ? '' : `border-bottom:1px solid ${C.cardLine};`
+    return `<tr><td style="padding:14px 20px;${border}font-family:${C.ff};font-size:14px;color:${C.muted};width:120px;vertical-align:top;">${label}</td><td style="padding:14px 20px;${border}font-family:${C.ff};font-size:14px;color:${C.ink};">${value}</td></tr>`
+  }
+
+  // Warnbanner, falls die Airtable-Speicherung fehlgeschlagen ist
+  const warning =
+    params.airtableOk === false
+      ? `<tr><td style="padding:0 40px;"><div style="background:#fdece6;border:1px solid #f5b79f;border-radius:12px;padding:14px 18px;font-family:${C.ff};font-size:14px;color:#8a2c10;">⚠️ <strong>Airtable-Speicherung fehlgeschlagen</strong> — bitte diese Bewerbung manuell sichern. Alle Daten stehen unten.</div></td></tr>`
+      : ''
+
+  const optional = (label: string, value?: string) =>
+    value && value.trim() ? row(label, esc(value).replace(/\n/g, '<br>')) : ''
+
   const cardRows = `
 ${heroBlock('Neue Bewerbung', name)}
-<tr><td style="padding:26px 40px 34px;">
+${warning}
+<tr><td style="padding:${warning ? '18px' : '26px'} 40px 34px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.infoBg};border:1px solid ${C.cardLine};border-radius:14px;">
-<tr><td style="padding:14px 20px;border-bottom:1px solid ${C.cardLine};font-family:${C.ff};font-size:14px;color:${C.muted};width:120px;">E-Mail</td><td style="padding:14px 20px;border-bottom:1px solid ${C.cardLine};font-family:${C.ff};font-size:14px;color:${C.ink};"><a href="mailto:${mail}" style="color:${C.coral};text-decoration:none;">${mail}</a></td></tr>
-<tr><td style="padding:14px 20px;border-bottom:1px solid ${C.cardLine};font-family:${C.ff};font-size:14px;color:${C.muted};">Event</td><td style="padding:14px 20px;border-bottom:1px solid ${C.cardLine};font-family:${C.ff};font-size:14px;color:${C.ink};">${eventTitle}</td></tr>
-<tr><td style="padding:14px 20px;font-family:${C.ff};font-size:14px;color:${C.muted};">Format</td><td style="padding:14px 20px;font-family:${C.ff};font-size:14px;color:${C.ink};">${format}</td></tr>
+${row('E-Mail', `<a href="mailto:${mail}" style="color:${C.coral};text-decoration:none;">${mail}</a>`)}
+${params.instagram ? row('Instagram', esc(params.instagram)) : ''}
+${row('Event', eventTitle)}
+${row('Format', format)}
+${optional('Themen', params.themen)}
+${optional('Vorstellung', params.bio)}
+${optional('Motivation', params.motivation)}
 </table></td></tr>
 ${footerBlock()}`
 

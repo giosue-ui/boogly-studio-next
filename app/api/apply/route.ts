@@ -19,22 +19,30 @@ const ApplySchema = z.object({
   tiktok: z.string().optional(),
   youtube: z.string().url('Ungültige YouTube-URL').optional().or(z.literal('')),
 
+  // DSGVO-Einwilligung (serverseitig erzwungen)
+  consent: z.boolean().refine((v) => v === true, 'Bitte stimme der Datenschutzerklärung zu.'),
+
   // Honeypot (Spam-Schutz)
   website: z.string().max(0, 'Bot erkannt').optional(),
 })
 
 // ─── Rate Limiting (einfach, in-memory) ───────────────────────────────────────
 const submissionTimestamps = new Map<string, number[]>()
+const windowMs = 15 * 60 * 1000 // 15 Minuten
 
-function isRateLimited(ip: string): boolean {
+function isRateLimited(ip: string, maxRequests: number): boolean {
   const now = Date.now()
-  const windowMs = 15 * 60 * 1000 // 15 Minuten
-  const maxRequests = 3
 
-  const timestamps = (submissionTimestamps.get(ip) || []).filter(
-    (ts) => now - ts < windowMs
-  )
+  // Gelegentliches Aufräumen, damit die Map nicht unbegrenzt wächst
+  if (submissionTimestamps.size > 5000) {
+    submissionTimestamps.forEach((ts, key) => {
+      const fresh = ts.filter((t) => now - t < windowMs)
+      if (fresh.length === 0) submissionTimestamps.delete(key)
+      else submissionTimestamps.set(key, fresh)
+    })
+  }
 
+  const timestamps = (submissionTimestamps.get(ip) || []).filter((ts) => now - ts < windowMs)
   if (timestamps.length >= maxRequests) return true
 
   timestamps.push(now)
@@ -50,9 +58,15 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    // Body-Größe begrenzen (DoS-Schutz)
+    const contentLength = Number(request.headers.get('content-length') || 0)
+    if (contentLength > 50_000) {
+      return NextResponse.json({ error: 'Anfrage zu groß.' }, { status: 413 })
+    }
+
     // Rate Limiting
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown'
-    if (isRateLimited(ip)) {
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+    if (isRateLimited(ip, 3)) {
       return NextResponse.json(
         { error: 'Zu viele Anfragen. Bitte warte 15 Minuten.' },
         { status: 429 }
@@ -82,18 +96,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true })
     }
 
-    // 1. In Airtable speichern (nicht blockierend — E-Mails werden trotzdem gesendet)
-    saveApplication({
-      name: data.name,
-      email: data.email,
-      instagram: data.instagram,
-      tiktok: data.tiktok,
-      youtube: data.youtube,
-      format: data.format,
-      bio: data.bio,
-      motivation: data.motivation,
-      themen: data.themen,
-    }).catch((err) => console.error('[apply] Airtable-Fehler:', err))
+    // 1. In Airtable speichern — Fehler wird protokolliert UND in der internen
+    //    Mail markiert, damit die vollständigen Daten nie verloren gehen.
+    let airtableOk = true
+    try {
+      await saveApplication({
+        name: data.name,
+        email: data.email,
+        instagram: data.instagram,
+        tiktok: data.tiktok,
+        youtube: data.youtube,
+        format: data.format,
+        bio: data.bio,
+        motivation: data.motivation,
+        themen: data.themen,
+      })
+    } catch (err) {
+      airtableOk = false
+      console.error('[apply] Airtable-Fehler:', err)
+    }
 
     // 2. Bestätigungs-E-Mail an Bewerber
     await sendApplicationConfirmation({
@@ -103,12 +124,17 @@ export async function POST(request: NextRequest) {
       format: data.format,
     }).catch((err) => console.error('[apply] Bestätigungsmail fehlgeschlagen:', err))
 
-    // 3. Benachrichtigung an Boogly Studio
+    // 3. Benachrichtigung an Boogly Studio (mit vollständigen Daten als Sicherung)
     await sendApplicationNotification({
       applicantName: data.name,
       applicantEmail: data.email,
       eventTitle: data.eventTitle,
       format: data.format,
+      instagram: data.instagram,
+      bio: data.bio,
+      motivation: data.motivation,
+      themen: data.themen,
+      airtableOk,
     }).catch((err) => console.error('[apply] Benachrichtigungsmail fehlgeschlagen:', err))
 
     return NextResponse.json({ ok: true })

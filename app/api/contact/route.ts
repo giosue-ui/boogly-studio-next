@@ -7,16 +7,27 @@ const ContactSchema = z.object({
   email: z.string().email(),
   subject: z.string().max(200).optional(),
   message: z.string().min(10).max(5000),
+  // DSGVO-Einwilligung (serverseitig erzwungen)
+  consent: z.boolean().refine((v) => v === true, 'Bitte stimme der Datenschutzerklärung zu.'),
   website: z.string().max(0).optional(), // Honeypot
 })
 
 // ─── Rate Limiting (einfach, in-memory) ───────────────────────────────────────
 const submissionTimestamps = new Map<string, number[]>()
+const windowMs = 15 * 60 * 1000 // 15 Minuten
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now()
-  const windowMs = 15 * 60 * 1000 // 15 Minuten
   const maxRequests = 5
+
+  if (submissionTimestamps.size > 5000) {
+    submissionTimestamps.forEach((ts, key) => {
+      const fresh = ts.filter((t) => now - t < windowMs)
+      if (fresh.length === 0) submissionTimestamps.delete(key)
+      else submissionTimestamps.set(key, fresh)
+    })
+  }
+
   const timestamps = (submissionTimestamps.get(ip) || []).filter((ts) => now - ts < windowMs)
   if (timestamps.length >= maxRequests) return true
   timestamps.push(now)
@@ -26,7 +37,12 @@ function isRateLimited(ip: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown'
+    const contentLength = Number(request.headers.get('content-length') || 0)
+    if (contentLength > 50_000) {
+      return NextResponse.json({ error: 'Anfrage zu groß.' }, { status: 413 })
+    }
+
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
     if (isRateLimited(ip)) {
       return NextResponse.json({ error: 'Zu viele Anfragen. Bitte warte kurz.' }, { status: 429 })
     }
