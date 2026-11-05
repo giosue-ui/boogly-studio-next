@@ -26,7 +26,7 @@ export default function ImpressumPage() {
 
         <section>
           <h2 className="font-semibold mb-2" style={{ color: 'var(--text)' }}>
-            Angaben gemäß § 5 TMG
+            Angaben gemäß § 5 DDG
           </h2>
           <p>
             Giosuele Visalli<br />
@@ -43,11 +43,11 @@ export default function ImpressumPage() {
           <p>
             E-Mail:{' '}
             <a
-              href="mailto:hallo@boogly.studio"
+              href="mailto:giosuecreates@gmail.com"
               className="transition-colors"
               style={{ color: 'var(--accent)' }}
             >
-              hallo@boogly.studio
+              giosuecreates@gmail.com
             </a>
           </p>
         </section>
@@ -64,9 +64,11 @@ export default function ImpressumPage() {
         </section>
 
         <section>
+          <h2 className="font-semibold mb-2" style={{ color: 'var(--text)' }}>
+            Umsatzsteuer-Identifikationsnummer
+          </h2>
           <p>
-            Boogly Studio ist ein nicht-eingetragenes Einzelunternehmen. Keine Umsatzsteuer-ID
-            vorhanden (Kleinunternehmerregelung § 19 UStG).
+            USt-IdNr. gemäß § 27a UStG: DE465244038
           </p>
         </section>
 

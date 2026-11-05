@@ -191,7 +191,7 @@ export async function sendApplicationNotification(params: {
   themen?: string
   airtableOk?: boolean
 }): Promise<void> {
-  const notificationEmail = process.env.BREVO_NOTIFICATION_EMAIL || 'hallo@boogly.studio'
+  const notificationEmail = process.env.BREVO_NOTIFICATION_EMAIL || 'giosuecreates@gmail.com'
   const name = esc(params.applicantName)
   const mail = esc(params.applicantEmail)
   const eventTitle = esc(params.eventTitle)
@@ -243,7 +243,7 @@ export async function sendContactNotification(params: {
   email: string
   message: string
 }): Promise<void> {
-  const notificationEmail = process.env.BREVO_NOTIFICATION_EMAIL || 'hallo@boogly.studio'
+  const notificationEmail = process.env.BREVO_NOTIFICATION_EMAIL || 'giosuecreates@gmail.com'
   const name = esc(params.name)
   const mail = esc(params.email)
   const message = esc(params.message).replace(/\n/g, '<br>')
@@ -273,7 +273,7 @@ ${footerBlock()}`
    4) System-Alarm bei Serverfehlern (leichtgewichtiges Monitoring)
    ──────────────────────────────────────────────────────────────── */
 export async function sendInternalAlert(subject: string, lines: string[]): Promise<void> {
-  const to = process.env.BREVO_NOTIFICATION_EMAIL || 'hallo@boogly.studio'
+  const to = process.env.BREVO_NOTIFICATION_EMAIL || 'giosuecreates@gmail.com'
   const body = lines
     .map((l) => `<p style="font-family:${C.ff};font-size:14px;line-height:1.5;color:#8a2c10;margin:0 0 8px;">${esc(l)}</p>`)
     .join('')
